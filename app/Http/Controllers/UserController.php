@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Auth;
-use App\Riset;
 use PDF;
+use Auth;
 use Image;
+use App\Riset;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -24,7 +25,19 @@ class UserController extends Controller
     {
         $tembusan = array_map('trim',array_filter(explode(',', $req->tembusan)));
         $anggota  = array_map('trim',array_filter(explode(',', $req->anggota)));
-     
+
+        $validator = Validator::make($req->all(), [
+            'file' => 'mimes:pdf,docx,png,jpg,jpeg|max:2048'
+        ]);
+
+        if ($validator->fails()) {            
+            $pesan = array(
+                'message' => 'File Harus Berupa pdf/docx/png/jpg/jpeg', 
+                'alert-type' => 'error');
+            
+            return back()->with($pesan);
+        }
+        
         if($req->hasFile('file'))
         {
             $filename = $req->file->getClientOriginalName();
@@ -74,6 +87,18 @@ class UserController extends Controller
     {
         $tembusan = array_map('trim',array_filter(explode(',', $req->tembusan)));
         $anggota  = array_map('trim',array_filter(explode(',', $req->anggota)));
+        
+        $validator = Validator::make($req->all(), [
+            'file' => 'mimes:pdf,docx,png,jpg,jpeg|max:2048'
+        ]);
+
+        if ($validator->fails()) {            
+            $pesan = array(
+                'message' => 'File Harus Berupa pdf/docx/png/jpg/jpeg', 
+                'alert-type' => 'error');
+            
+            return back()->with($pesan);
+        }
         //dd($req->file->getClientOriginalName());
         if($req->hasFile('file'))
         {

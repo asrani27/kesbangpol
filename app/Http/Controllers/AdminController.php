@@ -20,6 +20,7 @@ use PDF;
 use Storage;
 class AdminController extends Controller
 {
+
     public function riset()
     {
         return view('backend.riset.riset_admin',compact('data'));
