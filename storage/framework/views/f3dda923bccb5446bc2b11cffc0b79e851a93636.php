@@ -19,57 +19,28 @@
         <ul class="nav navbar-nav">
             
           <!-- Notifications Menu -->
-          {{-- <li class="dropdown notifications-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- Inner Menu: contains the notifications -->
-                <ul class="menu">
-                  <li><!-- start notification -->
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <!-- end notification -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li> --}}
+          
 
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{url('assets/user.png')}}" class="user-image" alt="User Image">
+              <img src="<?php echo e(url('assets/user.png')); ?>" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
             <span class="hidden-xs">
-              @if (Auth::user() == null)
-                  -
-              @else
-                  
-                {{Auth::user()->name}}
-              @endif
+              <?php echo e(Auth::user()->name); ?>
+
             </span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{url('assets/user.png')}}" class="img-circle" alt="User Image">
+                <img src="<?php echo e(url('assets/user.png')); ?>" class="img-circle" alt="User Image">
 
-                <p> 
-                  @if (Auth::user() == null)
-                  -
-                  @else
-                      
-                    {{Auth::user()->name}}
-                  @endif
+                <p>
+                  <?php echo e(Auth::user()->name); ?>
+
                   
                 </p>
               </li>
@@ -80,15 +51,13 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                <a href="{{route('logout')}}" class="btn btn-default btn-flat">Sign out</a>
+                <a href="<?php echo e(route('logout')); ?>" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          {{-- <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li> --}}
+          
         </ul>
       </div>
     </nav>
