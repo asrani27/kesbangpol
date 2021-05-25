@@ -151,6 +151,14 @@ class UserController extends Controller
     public function editriset($id)
     {
         $riset = Riset::where('id',$id)->get();
+        $user_id = Auth::user()->id;
+        if($user_id != $riset->first()->user_id){
+            $pesan = array(
+                'message' => 'Riset Itu Bukan milik Anda', 
+                'alert-type' => 'error');
+                return back()->with($pesan);
+        }
+        
         $d = $riset->map(function($item){
             $item->datas = json_decode($item->data, true);
             return $item;
@@ -163,7 +171,15 @@ class UserController extends Controller
 
     public function delriset($id)
     {
+        
         $d = Riset::findOrFail($id);
+        $user_id = Auth::user()->id;
+        if($user_id != $d->first()->user_id){
+            $pesan = array(
+                'message' => 'Riset Itu Bukan milik Anda', 
+                'alert-type' => 'error');
+                return back()->with($pesan);
+        }
         $d->delete();
         $pesan = array(
             'message' => 'Berhasil Di Hapus', 
