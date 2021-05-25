@@ -147,8 +147,8 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/riset/printpdfuser', 'UserController@printbiodata');
 
     // Route Ormas For User
-    Route::get('/ormas', 'UserController@ormas')->name('user.ormas');
-    Route::get('/ormas/add', 'UserController@addormas')->name('user.addormas');
+    // Route::get('/ormas', 'UserController@ormas')->name('user.ormas');
+    // Route::get('/ormas/add', 'UserController@addormas')->name('user.addormas');
 
     //Route Ganti Password
     Route::get('/gantipass', 'UserController@gantipass')->name('gantipass');
