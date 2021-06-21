@@ -174,7 +174,8 @@ class UserController extends Controller
         
         $d = Riset::findOrFail($id);
         $user_id = Auth::user()->id;
-        if($user_id != $d->first()->user_id){
+        
+        if($user_id != $d->user_id){
             $pesan = array(
                 'message' => 'Riset Itu Bukan milik Anda', 
                 'alert-type' => 'error');
