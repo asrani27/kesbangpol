@@ -29,8 +29,13 @@
               <img src="<?php echo e(url('assets/user.png')); ?>" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
             <span class="hidden-xs">
-              <?php echo e(Auth::user()->name); ?>
+              <?php if(Auth::user() == null): ?>
+                  -
+              <?php else: ?>
+                  
+                <?php echo e(Auth::user()->name); ?>
 
+              <?php endif; ?>
             </span>
             </a>
             <ul class="dropdown-menu">
@@ -38,9 +43,14 @@
               <li class="user-header">
                 <img src="<?php echo e(url('assets/user.png')); ?>" class="img-circle" alt="User Image">
 
-                <p>
-                  <?php echo e(Auth::user()->name); ?>
+                <p> 
+                  <?php if(Auth::user() == null): ?>
+                  -
+                  <?php else: ?>
+                      
+                    <?php echo e(Auth::user()->name); ?>
 
+                  <?php endif; ?>
                   
                 </p>
               </li>
