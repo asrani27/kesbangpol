@@ -24,7 +24,7 @@ Route::get('/kontak', 'FrontController@kontak')->name('kontak');
 Route::get('/view-ormas', 'FrontController@ormas')->name('ormas');
 Route::get('/view-riset', 'FrontController@riset')->name('riset');
 Route::get('/kategori/{id}', 'FrontController@kategori')->name('kategori');
-\
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/role', 'HomeController@role')->name('role');
 Route::post('/daftar', 'RegController@daftar')->name('daftar');
