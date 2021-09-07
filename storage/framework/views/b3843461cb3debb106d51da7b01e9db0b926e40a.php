@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="<?php echo e(url('assets/dist/css/skins/_all-skins.min.css')); ?>">
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="http://sso.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.js"></script>
+	<script src="https://sso.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.js"></script>
     <?php echo $__env->yieldPushContent('add_css'); ?>
 
   <!-- Google Font -->

@@ -15,7 +15,7 @@ class AuthSsoController extends Controller
     var $password = 'qwerty';
 
     // var $base_url = 'http://sso.banjarmasinkota.go.id:8000';
-    var $base_url = 'http://sso.banjarmasinkota.go.id';
+    var $base_url = 'https://sso.banjarmasinkota.go.id';
     
     public function register(Request $req)
     { 
