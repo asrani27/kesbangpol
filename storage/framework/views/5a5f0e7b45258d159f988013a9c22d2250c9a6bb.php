@@ -4,16 +4,16 @@
 <html lang="en">
 <!--<![endif]-->
 
-@include('color.head')
+<?php echo $__env->make('color.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <body data-spy="scroll" data-target="#header-navbar" data-offset="51">
     <!-- begin #page-container -->
     <div id="page-container" class="fade">
         <!-- begin #header -->
-        @yield('navbar-transparan')
+        <?php echo $__env->yieldContent('navbar-transparan'); ?>
             <!-- begin container -->
             <div class="container">
-                @include('color.navbar')
+                <?php echo $__env->make('color.navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </div>
             <!-- end container -->
         </div>
@@ -21,24 +21,13 @@
         
         <!-- begin #home -->
 
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
         <!-- end #home -->
        
-        {{-- @include('color.tambahan') --}}
+        
         
         <!-- begin theme-panel -->
-        {{-- <div class="theme-panel">
-            <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
-            <div class="theme-panel-content">
-                <ul class="theme-list clearfix">
-                    <li><a href="javascript:;" class="bg-purple" data-theme="purple" data-theme-file="../assets/css/one-page-parallax/theme/purple.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a></li>
-                    <li><a href="javascript:;" class="bg-blue" data-theme="blue" data-theme-file="../assets/css/one-page-parallax/theme/blue.css" data-theme-file="" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
-                    <li class="active"><a href="javascript:;" class="bg-green" data-theme-file="../assets/css/one-page-parallax/theme/default.css" data-theme-file="" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default">&nbsp;</a></li>
-                    <li><a href="javascript:;" class="bg-orange" data-theme="orange" data-theme-file="../assets/css/one-page-parallax/theme/orange.css" data-theme-file="" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
-                    <li><a href="javascript:;" class="bg-red" data-theme="red" data-theme-file="../assets/css/one-page-parallax/theme/red.css" data-theme-file="" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
-                </ul>
-            </div>
-        </div> --}}
+        
         <!-- end theme-panel -->
     </div>
     <!-- end #page-container -->
@@ -51,21 +40,22 @@
                   <h4 class="modal-title">Daftar</h4>
                 </div>
                 <div class="modal-body">
-                  <form class="form-horizontal" method="POST" action="{{ route('daftar') }}">
-                    {{ csrf_field() }}
+                  <form class="form-horizontal" method="POST" action="<?php echo e(route('daftar')); ?>">
+                    <?php echo e(csrf_field()); ?>
+
     
                     <div class="form-group">
                         <label for="name" class="col-md-4 control-label">Nama Lengkap</label>
     
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <input id="name" type="text" class="form-control" name="name" value="<?php echo e(old('name')); ?>" required autofocus>
                         </div>
                     </div>
     
                     <div class="form-group">
                         <label for="email" class="col-md-4 control-label">E-Mail</label>
                         <div class="col-md-6">
-                            <input id="emailreg" type="email" class="form-control emailreg" name="email" value="{{ old('email') }}" required>
+                            <input id="emailreg" type="email" class="form-control emailreg" name="email" value="<?php echo e(old('email')); ?>" required>
                         <span id="error_email"></span>
                         </div>
                         <label class="col-md-1 control-label"></label>
@@ -116,8 +106,9 @@
                   <h4 class="modal-title">Login E-App</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+                    <form class="form-horizontal" method="POST" action="<?php echo e(route('login')); ?>">
+                        <?php echo e(csrf_field()); ?>
+
     
                         <div class="form-group">
                             <label for="email" class="col-md-4 control-label">E-Mail / Telp</label>
@@ -155,40 +146,40 @@
             <!-- /.modal-dialog -->
     </div>
     
-	<script src="{{url('color/assets/plugins/js-cookie/js.cookie.js')}}"></script>
-	<script src="{{url('color/assets/js/blog/apps.min.js')}}"></script>
+	<script src="<?php echo e(url('color/assets/plugins/js-cookie/js.cookie.js')); ?>"></script>
+	<script src="<?php echo e(url('color/assets/js/blog/apps.min.js')); ?>"></script>
 	<!-- ================== BEGIN BASE JS ================== -->
-	<script src="{{url('color/assets/plugins/jquery/jquery-3.2.1.min.js')}}"></script>
-	<script src="{{url('color/assets/plugins/bootstrap3/js/bootstrap.min.js')}}"></script>
-	<script src="{{url('color/assets/plugins/js-cookie/js.cookie.js')}}"></script>
-	<script src="{{url('color/assets/plugins/scrollMonitor/scrollMonitor.js')}}"></script>
-	<script src="{{url('color/assets/js/one-page-parallax/apps.min.js')}}"></script>
+	<script src="<?php echo e(url('color/assets/plugins/jquery/jquery-3.2.1.min.js')); ?>"></script>
+	<script src="<?php echo e(url('color/assets/plugins/bootstrap3/js/bootstrap.min.js')); ?>"></script>
+	<script src="<?php echo e(url('color/assets/plugins/js-cookie/js.cookie.js')); ?>"></script>
+	<script src="<?php echo e(url('color/assets/plugins/scrollMonitor/scrollMonitor.js')); ?>"></script>
+	<script src="<?php echo e(url('color/assets/js/one-page-parallax/apps.min.js')); ?>"></script>
     <!-- ================== END BASE JS ================== -->
-    @stack('add_js')
+    <?php echo $__env->yieldPushContent('add_js'); ?>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <script>
-    @if(Session::has('message'))
-      var type = "{{ Session::get('alert-type', 'info') }}";
+    <?php if(Session::has('message')): ?>
+      var type = "<?php echo e(Session::get('alert-type', 'info')); ?>";
       switch(type){
           case 'info':
-              toastr.info("{{ Session::get('message') }}");
+              toastr.info("<?php echo e(Session::get('message')); ?>");
               break;
           
           case 'warning':
-              toastr.warning("{{ Session::get('message') }}");
+              toastr.warning("<?php echo e(Session::get('message')); ?>");
               break;
   
           case 'error':
-              toastr.error("{{ Session::get('message') }}");
+              toastr.error("<?php echo e(Session::get('message')); ?>");
               break;
               
           case 'success':
-              toastr.success("{{ Session::get('message') }}");
+              toastr.success("<?php echo e(Session::get('message')); ?>");
               break;
   
       }
-    @endif
+    <?php endif; ?>
 </script>
 	<script>    
             function showPass()
@@ -237,7 +228,7 @@
             else
             {
                 $.ajax({
-                    url:"{{ route('cek.mail') }}",
+                    url:"<?php echo e(route('cek.mail')); ?>",
                     method:"POST",
                     data:{email:email, _token:_token},
                     success:function(result)
@@ -260,11 +251,11 @@
     <!-- The user is authenticated... -->
     
     <script>
-    @if(Auth::check())
+    <?php if(Auth::check()): ?>
     $(function() { 
-        window.location.replace("{{ url('/') }}");
+        window.location.replace("<?php echo e(url('/')); ?>");
     });
-    @else
+    <?php else: ?>
     
     console.log('ok');
     function clickLogin() {
@@ -286,10 +277,10 @@
         }
         formData.append('id_sso', user['id']);
         formData.append('token', token);
-        formData.append('_token', '{{ csrf_token() }}');
+        formData.append('_token', '<?php echo e(csrf_token()); ?>');
         $.ajax({
             type: "POST",
-            url: "{{ route('sso.register') }}",
+            url: "<?php echo e(route('sso.register')); ?>",
             data: formData,
             processData: false,
             contentType: false,
@@ -297,7 +288,7 @@
             success: function(data, textStatus, jqXHR) {
                 // $(".is-invalid").removeClass("is-invalid");
                 if (data['status'] == true) {
-                    window.location.replace("{{ url('/') }}");
+                    window.location.replace("<?php echo e(url('/')); ?>");
                 }   
             },
             error: function(data, textStatus, jqXHR) {
@@ -308,7 +299,7 @@
     }
 
     $(function() { 
-        @if (request('is_sso'))
+        <?php if(request('is_sso')): ?>
         var sso = new BjmSSO();
         sso.login(function(result) {
             console.log(result);
@@ -316,10 +307,10 @@
                 sendToServer(result);
             }
         });
-        @endif
+        <?php endif; ?>
     });
     </script>
-    @endif
+    <?php endif; ?>
 
 </body>
 </html>
