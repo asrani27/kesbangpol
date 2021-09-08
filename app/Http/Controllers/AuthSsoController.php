@@ -16,6 +16,7 @@ class AuthSsoController extends Controller
 
     // var $base_url = 'http://sso.banjarmasinkota.go.id:8000';
     var $base_url = 'https://sso.banjarmasinkota.go.id';
+    // var $base_url = 'http://server.banjarmasinkota.go.id:8000';
     
     public function register(Request $req)
     { 
@@ -46,10 +47,10 @@ class AuthSsoController extends Controller
                     $user->save();
                     $user->roles()->attach($roleUser); 
                 }
-                else  {        
+                else {        
                     return response()->json([
                         'status'  => false,
-                        'message' => 'Gagal, Email anda sudah terdaftar...', 
+                        'message' => 'Email sudah terdaftar, hubungkan dengan SSO terlebih dahulu ...', 
                     ]);    
                 }
             }
@@ -57,7 +58,8 @@ class AuthSsoController extends Controller
             // login
             if ($user) 
             {
-                if(Auth::attempt(['email' => $req->email, 'password' => $this->password])) 
+                Auth::login($user);
+                if (Auth::check())
                 {
                     return response()->json([
                         'status'  => true,
@@ -146,7 +148,7 @@ class AuthSsoController extends Controller
         curl_close($curl);
 
         $result = json_decode($response, true);
-
+        $result = ($result) ? $result : [];
         if (array_key_exists('status', $result)) {
             return $result['status'];
         }
