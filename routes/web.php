@@ -11,7 +11,7 @@ Route::get('file-upload', 'FrontController@upload');
 Route::post('file-upload/upload', 'FrontController@uploadstore')->name('upload');
 
 //Route Untuk Halaman Depan (Frontend)
-Route::get('/', 'FrontController@index');
+Route::get('/', 'FrontController@index'); 
 Route::get('/dok', 'FrontController@dokumen')->name('dokumen');
 Route::get('/berita', 'FrontController@artikel')->name('artikel');
 Route::get('/chart', 'FrontController@chart');
@@ -154,3 +154,5 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/gantipass', 'UserController@gantipass')->name('gantipass');
     Route::post('/gantipass/save', 'UserController@updatepass')->name('gantipass.save');
 });
+
+require __DIR__.'/web-sso.php';
