@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'User Tidak Ditemukan',
+    'failed' => 'Email atau Password Tidak Ditemukan',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
