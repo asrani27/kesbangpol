@@ -48,10 +48,9 @@ class AuthSsoController extends Controller
                     $user->roles()->attach($roleUser); 
                 }
                 else {        
-                    return response()->json([
-                        'status'  => false,
-                        'message' => 'Email sudah terdaftar, hubungkan dengan SSO terlebih dahulu ...', 
-                    ]);    
+                    // auto sync
+                    $user->id_sso = $req->id_sso;
+                    $user->save();
                 }
             }
 
