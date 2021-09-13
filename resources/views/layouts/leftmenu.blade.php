@@ -70,7 +70,7 @@
                 @if(auth()->user()->id_sso == null)
                 <a href="#" onClick="clickLogin();"><i class="fa fa-close text-red"></i> <span>Tidak Terhubung SSO</span></a>
                 @else
-                <a href="#"><i class="fa fa-check-circle text-aqua"></i> <span>Terhubung SSO</span></a>
+                <a href="#" onClick="clickLogin();"><i class="fa fa-check-circle text-aqua"></i> <span>Terhubung SSO</span></a>
                 @endif
               </li>
               <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i> <span>Log Out</span></a></li>
