@@ -52,6 +52,8 @@ class AuthSsoController extends Controller
                     $user->id_sso = $req->id_sso;
                     $user->save();
                 }
+
+                $this->_registerApp($req->id_sso);
             }
 
             // login
@@ -94,6 +96,7 @@ class AuthSsoController extends Controller
                 $user = User::find($req->id_app);
                 $user->id_sso = $req->id_sso;
                 $user->save(); 
+                $this->_registerApp($req->id_sso);
 
                 return response()->json([
                     'status'  => true,
@@ -140,6 +143,37 @@ class AuthSsoController extends Controller
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$token,
             ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        $result = json_decode($response, true);
+        $result = ($result) ? $result : [];
+        if (array_key_exists('status', $result)) {
+            return $result['status'];
+        }
+        return false;
+    }
+
+    protected function _registerApp($id_sso) 
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $this->base_url.'/api/sso/register-app',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array('id_user' => $id_sso, 'id_aplikasi' => 14), //14 = id aplikasi di app_sso
+            // CURLOPT_HTTPHEADER => array(
+            //     'Authorization: Bearer '.$token,
+            // ),
         ));
 
         $response = curl_exec($curl);
