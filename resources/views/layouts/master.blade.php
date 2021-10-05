@@ -17,10 +17,10 @@
   <link rel="stylesheet" href="{{url('assets/dist/css/skins/_all-skins.min.css')}}">
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  {{-- <link rel="stylesheet" href="https://sso.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.css">
-	<script src="https://sso.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.js"></script> --}}
-  <link rel="stylesheet"type="text/css" href="http://server.banjarmasinkota.go.id:8000/vendor/bjm-sso/bjm-sso.css">
-	<script src="http://server.banjarmasinkota.go.id:8000/vendor/bjm-sso/bjm-sso.js"></script>
+  <link rel="stylesheet" href="https://sso.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.css">
+	<script src="https://sso.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.js"></script>
+  {{-- <link rel="stylesheet"type="text/css" href="http://server.banjarmasinkota.go.id:8000/vendor/bjm-sso/bjm-sso.css">
+	<script src="http://server.banjarmasinkota.go.id:8000/vendor/bjm-sso/bjm-sso.js"></script> --}}
   
     @stack('add_css')
 
