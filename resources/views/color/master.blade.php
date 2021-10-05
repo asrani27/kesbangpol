@@ -302,6 +302,7 @@
                 else {
                     console.log(data['message']);
                     toastr.error(data['message']);
+                    $("div").removeClass("loadingsso");
                 }  
             },
             error: function(data, textStatus, jqXHR) {
