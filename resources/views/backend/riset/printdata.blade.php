@@ -81,7 +81,7 @@
 	<table style="width: 100%">
 		<tr>
 			<td style="width: 10%" valign="top">
-				<img src="https://kesbangpol.banjarmasinkota.go.id/assets/logk.jpg" height="100px">
+				<img src="{{ url('/assets/logk.jpg') }}" height="100px">
         	</td>
 			<td>
 
