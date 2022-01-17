@@ -297,8 +297,13 @@
             success: function(data, textStatus, jqXHR) {
                 // $(".is-invalid").removeClass("is-invalid");
                 if (data['status'] == true) {
-                    window.location.replace("{{ url('/') }}");
-                }   
+                    location.reload();
+                }
+                else {
+                    console.log(data['message']);
+                    toastr.error(data['message']);
+                    $("div").removeClass("loadingsso");
+                }  
             },
             error: function(data, textStatus, jqXHR) {
                 console.log(data);
