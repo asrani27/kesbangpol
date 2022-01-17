@@ -14,38 +14,38 @@ class UserController extends Controller
     public function riset()
     {
         $riset = Auth::user()->riset;
-        $data = $riset->map(function($item){
+        $data = $riset->map(function ($item) {
             $item->datas = json_decode($item->data, true);
             return $item;
         });
-        return view('backend.riset.riset_user',compact('data'));   
+        return view('backend.riset.riset_user', compact('data'));
     }
 
     public function saveriset(Request $req)
     {
-        $tembusan = array_map('trim',array_filter(explode(',', $req->tembusan)));
-        $anggota  = array_map('trim',array_filter(explode(',', $req->anggota)));
+        $tembusan = array_map('trim', array_filter(explode(',', $req->tembusan)));
+        $anggota  = array_map('trim', array_filter(explode(',', $req->anggota)));
 
         $validator = Validator::make($req->all(), [
-            'file' => 'mimes:pdf,docx,png,jpg,jpeg|max:2048'
+            'file' => 'mimes:pdf,png,jpg,jpeg|max:5128'
         ]);
 
-        if ($validator->fails()) {            
+        if ($validator->fails()) {
             $pesan = array(
-                'message' => 'File Harus Berupa pdf/docx/png/jpg/jpeg', 
-                'alert-type' => 'error');
-            
+                'message' => 'File Harus Berupa pdf/docx/png/jpg/jpeg',
+                'alert-type' => 'error'
+            );
+
             return back()->with($pesan);
         }
-        
-        if($req->hasFile('file'))
-        {
+
+        if ($req->hasFile('file')) {
             $filename = $req->file->getClientOriginalName();
-            $filename = date('d-m-Y-').rand(1,9999).$filename;
-                        
-            $req->file->storeAs('/public',$filename);
-        }        
-        
+            $filename = date('d-m-Y-') . rand(1, 9999) . $filename;
+
+            $req->file->storeAs('/public', $filename);
+        }
+
         $datajson  = json_encode([
             'universitas' => $req->universitas,
             'no_surat'    => $req->no_surat,
@@ -59,7 +59,7 @@ class UserController extends Controller
             'tujuan'      => $req->tujuan,
             'riset'       => $req->riset,
             'judul'       => $req->judul,
-            'penanggung_jawab'=> $req->penanggung_jawab,
+            'penanggung_jawab' => $req->penanggung_jawab,
             'tempat'      => $req->tempat,
             'lama_waktu'  => $req->lama_waktu,
             'tembusan'    => $tembusan,
@@ -74,44 +74,42 @@ class UserController extends Controller
         $save->data    = $data;
         $save->user_id = $user_id;
         $save->save();
-        
+
         $pesan = array(
-            'message' => 'Berhasil Di Simpan', 
-            'alert-type' => 'success');
-        
+            'message' => 'Berhasil Di Simpan',
+            'alert-type' => 'success'
+        );
+
         return redirect('/riset')->with($pesan);
-            
     }
 
     public function updateriset(Request $req, $id)
     {
-        $tembusan = array_map('trim',array_filter(explode(',', $req->tembusan)));
-        $anggota  = array_map('trim',array_filter(explode(',', $req->anggota)));
-        
+        $tembusan = array_map('trim', array_filter(explode(',', $req->tembusan)));
+        $anggota  = array_map('trim', array_filter(explode(',', $req->anggota)));
+
         $validator = Validator::make($req->all(), [
             'file' => 'mimes:pdf,docx,png,jpg,jpeg|max:2048'
         ]);
 
-        if ($validator->fails()) {            
+        if ($validator->fails()) {
             $pesan = array(
-                'message' => 'File Harus Berupa pdf/docx/png/jpg/jpeg', 
-                'alert-type' => 'error');
-            
+                'message' => 'File Harus Berupa pdf/docx/png/jpg/jpeg',
+                'alert-type' => 'error'
+            );
+
             return back()->with($pesan);
         }
         //dd($req->file->getClientOriginalName());
-        if($req->hasFile('file'))
-        {
+        if ($req->hasFile('file')) {
             $filename = $req->file->getClientOriginalName();
-            $filename = date('d-m-Y-').rand(1,9999).$filename;
-            $req->file->storeAs('/public',$filename);
-        }
-        else
-        {
+            $filename = date('d-m-Y-') . rand(1, 9999) . $filename;
+            $req->file->storeAs('/public', $filename);
+        } else {
             $file     = Riset::find($id);
             $filename = json_decode($file->data)->file;
-        }        
-        
+        }
+
         $datajson  = json_encode([
             'universitas' => $req->universitas,
             'no_surat'    => $req->no_surat,
@@ -125,7 +123,7 @@ class UserController extends Controller
             'tujuan'      => $req->tujuan,
             'riset'       => $req->riset,
             'judul'       => $req->judul,
-            'penanggung_jawab'=> $req->penanggung_jawab,
+            'penanggung_jawab' => $req->penanggung_jawab,
             'tempat'      => $req->tempat,
             'lama_waktu'  => $req->lama_waktu,
             'tembusan'    => $tembusan,
@@ -139,59 +137,62 @@ class UserController extends Controller
         $save->data    = $data;
         $save->user_id = $user_id;
         $save->save();
-        
+
         $pesan = array(
-            'message' => 'Berhasil Di Update', 
-            'alert-type' => 'success');
-        
+            'message' => 'Berhasil Di Update',
+            'alert-type' => 'success'
+        );
+
         return redirect('/riset')->with($pesan);
-            
     }
 
     public function editriset($id)
     {
-        $riset = Riset::where('id',$id)->get();
+        $riset = Riset::where('id', $id)->get();
         $user_id = Auth::user()->id;
-        if($user_id != $riset->first()->user_id){
+        if ($user_id != $riset->first()->user_id) {
             $pesan = array(
-                'message' => 'Riset Itu Bukan milik Anda', 
-                'alert-type' => 'error');
-                return back()->with($pesan);
+                'message' => 'Riset Itu Bukan milik Anda',
+                'alert-type' => 'error'
+            );
+            return back()->with($pesan);
         }
-        
-        $d = $riset->map(function($item){
+
+        $d = $riset->map(function ($item) {
             $item->datas = json_decode($item->data, true);
             return $item;
         })->first();
-        $anggota = implode(", ",$d->datas['anggota']);
-        $tembusan = implode(", ",$d->datas['tembusan']);
-        
-        return view('backend.riset.edit_user',compact('d','anggota','tembusan'));
+        $anggota = implode(", ", $d->datas['anggota']);
+        $tembusan = implode(", ", $d->datas['tembusan']);
+
+        return view('backend.riset.edit_user', compact('d', 'anggota', 'tembusan'));
     }
 
     public function delriset($id)
     {
-        
+
         $d = Riset::findOrFail($id);
         $user_id = Auth::user()->id;
-        
-        if($user_id != $d->user_id){
+
+        if ($user_id != $d->user_id) {
             $pesan = array(
-                'message' => 'Riset Itu Bukan milik Anda', 
-                'alert-type' => 'error');
-                return back()->with($pesan);
+                'message' => 'Riset Itu Bukan milik Anda',
+                'alert-type' => 'error'
+            );
+            return back()->with($pesan);
         }
         $d->delete();
         $pesan = array(
-            'message' => 'Berhasil Di Hapus', 
-            'alert-type' => 'success');
+            'message' => 'Berhasil Di Hapus',
+            'alert-type' => 'success'
+        );
         return back()->with($pesan);
     }
 
     public function viewriset($id)
     {
-        $riset = Riset::where('id',$id)->get();
-        $d = $riset->map(function($item){
+        $riset = Riset::where('id', $id)->get();
+        $d = $riset->map(function ($item) {
             $item->datas = json_decode($item->data, true);
             return $item;
         })->first();
@@ -206,17 +207,17 @@ class UserController extends Controller
 
     public function addriset()
     {
-        return view('backend.riset.add_user');   
+        return view('backend.riset.add_user');
     }
 
     public function ormas()
     {
-        return view('backend.ormas.ormas_user');   
+        return view('backend.ormas.ormas_user');
     }
 
     public function addormas()
     {
-        return view('backend.ormas.add_user');   
+        return view('backend.ormas.add_user');
     }
 
     public function gantipass()
@@ -226,24 +227,21 @@ class UserController extends Controller
 
     public function updatepass(Request $req)
     {
-        if($req->password1 == $req->password2)
-        {
+        if ($req->password1 == $req->password2) {
             $pass = Auth::User();
             $pass->password = bcrypt($req->password1);
             $pass->save();
 
             $pesan = array(
-                'message' => 'Berhasil Di Ubah!', 
+                'message' => 'Berhasil Di Ubah!',
                 'alert-type' => 'success'
-                     );
+            );
             return redirect('/gantipass')->with($pesan);
-        }
-        else
-        {
+        } else {
             $pesan = array(
-                'message' => 'Password Tidak Sama!', 
+                'message' => 'Password Tidak Sama!',
                 'alert-type' => 'error'
-                     );
+            );
         }
         return redirect('/gantipass')->with($pesan);
     }
@@ -252,5 +250,4 @@ class UserController extends Controller
     {
         return view('backend.riset.printuser');
     }
-
 }
