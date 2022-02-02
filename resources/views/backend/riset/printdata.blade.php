@@ -103,7 +103,7 @@
 				<td>
 
 					<div class="auto-style8">
-						<span class="auto-style5"><strong>PEMERINTAH KOTA BANJARMASIN</strong></span><br />
+						<span class="auto-style5"><strong>PEMERINTAH KOTA BANJARMASIN.</strong></span><br />
 						<span class="auto-style6"><strong>BADAN KESATUAN BANGSA DAN POLITIK
 								<br />
 								KOTA BANJARMASIN</strong></span><br />
