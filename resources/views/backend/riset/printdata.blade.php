@@ -98,7 +98,9 @@
 			<tr>
 				<td style="width: 10%" valign="top">
 					{{-- <img src="{{ url('/assets/logk.jpg') }}" height="100px"> --}}
-					{{-- <img src="https://kesbangpol.banjarmasinkota.go.id/assets/logk.jpg" height="100px"> --}}
+
+					<img src="https://rekreartive.com/wp-content/uploads/2018/12/Logo-Banjarmasin-Kota-Banjarmasin-Kalimantan-Selatan-Grayscale.jpg"
+						height="100px">
 				</td>
 				<td>
 
