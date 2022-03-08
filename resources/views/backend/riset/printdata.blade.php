@@ -99,7 +99,7 @@
 				<td style="width: 10%" valign="top">
 					{{-- <img src="{{ url('/assets/logk.jpg') }}" height="100px"> --}}
 
-					<img src="https://rekreartive.com/wp-content/uploads/2018/12/Logo-Banjarmasin-Kota-Banjarmasin-Kalimantan-Selatan-Grayscale.jpg"
+					<img src="http://4.bp.blogspot.com/-VzfWlC-3IYQ/T6u3HQL6i4I/AAAAAAAABWc/JW8NDkz4D4k/s1600/LOGO_BANJARMASIN.JPG"
 						height="100px">
 				</td>
 				<td>
