@@ -168,5 +168,6 @@ desired effect
   }
 </script>
 @stack('add_js')
+
 </body>
 </html>

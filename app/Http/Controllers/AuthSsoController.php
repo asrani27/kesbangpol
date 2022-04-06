@@ -8,8 +8,9 @@ use App\Role;
 use App\User;
 use Auth;
 
-class AuthSsoController extends Controller
+class AuthSsoController extends Controller 
 {
+	
     use RegistersUsers;
 
     var $password = 'qwerty';
