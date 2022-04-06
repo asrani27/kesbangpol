@@ -10,7 +10,6 @@ use Auth;
 
 class AuthSsoController extends Controller 
 {
-	
     use RegistersUsers;
 
     var $password = 'qwerty';
