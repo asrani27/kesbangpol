@@ -8,14 +8,14 @@ use App\Role;
 use App\User;
 use Auth;
 
-class AuthSsoController extends Controller
+class AuthSsoController extends Controller 
 {
     use RegistersUsers;
 
     var $password = 'qwerty';
 
-    // var $base_url = 'http://sso.banjarmasinkota.go.id:8000';
-    var $base_url = 'https://sso.banjarmasinkota.go.id';
+    // var $base_url = 'http://bapintar.banjarmasinkota.go.id:8000';
+    var $base_url = 'https://bapintar.banjarmasinkota.go.id';
     // var $base_url = 'http://server.banjarmasinkota.go.id:8000';
     
     public function register(Request $req)
