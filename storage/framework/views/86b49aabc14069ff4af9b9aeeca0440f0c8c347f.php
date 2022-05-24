@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="<?php echo e(url('assets/dist/css/AdminLTE.min.css')); ?>">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter -->
   <link rel="stylesheet" href="<?php echo e(url('assets/dist/css/skins/_all-skins.min.css')); ?>">
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://sso.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.css">
+	<script src="https://sso.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.js"></script>
+  
+  
     <?php echo $__env->yieldPushContent('add_css'); ?>
 
   <!-- Google Font -->
@@ -113,6 +119,53 @@ desired effect
     <?php endif; ?>
   </script>
 
+<script>
+  function clickLogin() {
+      var sso = new BjmSSO();
+      sso.loginWindow(function(result) {
+          console.log(result);
+          if (result['status']) {
+              sendToServer(result);
+          }
+      });
+  }
+
+  function sendToServer(result) {
+      var user = result['data']['user'];
+      var token = result['data']['key'];
+      var formData = new FormData();
+      for ( var key in user ) {
+          formData.append(key, user[key]);
+      }
+      formData.append('id_app', '<?php echo e(auth()->user()->id); ?>');
+      formData.append('id_sso', user['id']);
+      formData.append('token', token);
+      formData.append('_token', '<?php echo e(csrf_token()); ?>');
+      $.ajax({
+          type: "POST",
+          url: "<?php echo e(route('sso.sync')); ?>",
+          data: formData,
+          processData: false,
+          contentType: false,
+          dataType: "json",
+          success: function(data, textStatus, jqXHR) {
+              // $(".is-invalid").removeClass("is-invalid");
+              if (data['status'] == true) {
+                location.reload();
+              }
+              else {
+                console.log(data['message']);
+                toastr.error(data['message']);
+                $("div").removeClass("loadingsso");
+              } 
+          },
+          error: function(data, textStatus, jqXHR) {
+              console.log(data);
+              console.log('Login Gagal!');
+          },
+      });
+  }
+</script>
 <?php echo $__env->yieldPushContent('add_js'); ?>
 </body>
 </html>

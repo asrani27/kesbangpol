@@ -52,6 +52,13 @@
             </li>
           <li><a href="<?php echo e(route('admin.pejabat')); ?>"><i class="fa fa-circle"></i> Pejabat TTD</a></li>
           <li><a href="<?php echo e(route('admin.account')); ?>"><i class="fa fa-user-plus"></i> <span>Account</span></a></li>
+          <li>
+            <?php if(auth()->user()->id_sso == null): ?>
+            <a href="#" onClick="clickLogin();"><i class="fa fa-close text-red"></i> <span>Tidak Terhubung SSO</span></a>
+            <?php else: ?>
+            <a href="#"><i class="fa fa-check-circle text-aqua"></i> <span>Terhubung SSO</span></a>
+            <?php endif; ?>
+          </li>
           <li><a href="<?php echo e(route('logout')); ?>"><i class="fa fa-sign-out"></i> <span>Log Out</span></a></li>
         </ul>
         <?php elseif(auth()->user()->hasRole('user')): ?>
@@ -60,6 +67,13 @@
               <li><a href="<?php echo e(route('home')); ?>"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
               <li><a href="<?php echo e(route('user.riset')); ?>"><i class="fa fa-credit-card"></i> <span>Surat Rekomendasi Peneltian</span></a></li>
               <li><a href="<?php echo e(route('gantipass')); ?>"><i class="fa fa-user-plus"></i> <span>Ganti Password</span></a></li>
+              <li>
+                <?php if(auth()->user()->id_sso == null): ?>
+                <a href="#" onClick="clickLogin();"><i class="fa fa-close text-red"></i> <span>Tidak Terhubung SSO</span></a>
+                <?php else: ?>
+                <a href="#" onClick="clickLogin();"><i class="fa fa-check-circle text-aqua"></i> <span>Terhubung SSO</span></a>
+                <?php endif; ?>
+              </li>
               <li><a href="<?php echo e(route('logout')); ?>"><i class="fa fa-sign-out"></i> <span>Log Out</span></a></li>
         </ul>
         <?php else: ?>

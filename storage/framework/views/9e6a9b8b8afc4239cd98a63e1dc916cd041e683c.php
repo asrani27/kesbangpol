@@ -136,6 +136,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-theme pull-left" data-dismiss="modal">Keluar</button>
+                  <button type="button" class="btn btn-primary" onClick="clickLogin();">MASUK / DAFTAR SSO</button>
                   <button type="submit" class="btn btn-primary">Masuk</button>
                 </div>
               </form>  
@@ -246,5 +247,75 @@
         });
     });
 	</script>
+
+    <!-- The user is authenticated... -->
+    
+    <script>
+    <?php if(Auth::check()): ?>
+    $(function() { 
+        window.location.replace("<?php echo e(url('/')); ?>");
+    });
+    <?php else: ?>
+    
+    console.log('ok');
+    function clickLogin() {
+        var sso = new BjmSSO();
+        sso.loginWindow(function(result) {
+            console.log(result);
+            if (result['status']) {
+                sendToServer(result);
+            }
+        });
+    }
+
+    function sendToServer(result) {
+        var user = result['data']['user'];
+        var token = result['data']['key'];
+        var formData = new FormData();
+        for ( var key in user ) {
+            formData.append(key, user[key]);
+        }
+        formData.append('id_sso', user['id']);
+        formData.append('token', token);
+        formData.append('_token', '<?php echo e(csrf_token()); ?>');
+        $.ajax({
+            type: "POST",
+            url: "<?php echo e(route('sso.register')); ?>",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function(data, textStatus, jqXHR) {
+                // $(".is-invalid").removeClass("is-invalid");
+                if (data['status'] == true) {
+                    location.reload();
+                }
+                else {
+                    console.log(data['message']);
+                    toastr.error(data['message']);
+                    $("div").removeClass("loadingsso");
+                }  
+            },
+            error: function(data, textStatus, jqXHR) {
+                console.log(data);
+                console.log('Login Gagal!');
+            },
+        });
+    }
+
+    $(function() { 
+        <?php if(request('is_sso')): ?>
+        var sso = new BjmSSO();
+        sso.login(function(result) {
+            console.log(result);
+            if (result['status']) {
+                sendToServer(result);
+            }
+        });
+        <?php endif; ?>
+    });
+    </script>
+    <?php endif; ?>
+
 </body>
 </html>
