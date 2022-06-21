@@ -21,6 +21,21 @@ use Validator;
 
 class FrontController extends Controller
 {
+    public function desain1()
+    {
+        return view('desain1');
+    }
+
+    public function login1()
+    {
+        return view('desain1.login');
+    }
+
+    public function desain2()
+    {
+        return view('desain2');
+    }
+
     public function upload()
     {
         return view('upload_file');
@@ -29,177 +44,156 @@ class FrontController extends Controller
     {
         //dd($request->all());
         $rules = array(
-         'file'  => 'required'
+            'file'  => 'required'
         );
-   
+
         $error = Validator::make($request->all(), $rules);
-   
-        if($error->fails())
-        {
-         return response()->json(['errors' => $error->errors()->all()]);
+
+        if ($error->fails()) {
+            return response()->json(['errors' => $error->errors()->all()]);
         }
-   
+
 
         $image = $request->file('file');
-   
+
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
         //dd($new_name, $image->getClientOriginalExtension());
-        $request->file->storeAs('/public/images',$new_name);
-        
-   
+        $request->file->storeAs('/public/images', $new_name);
+
+
         $output = array(
             'success' => 'Image uploaded successfully',
-            'image'  => '<img src="/storage/images/'.$new_name.'" class="img-thumbnail" />'
-           );
-   
-           return response()->json($output);
+            'image'  => '<img src="/storage/images/' . $new_name . '" class="img-thumbnail" />'
+        );
+
+        return response()->json($output);
     }
     public function index()
     {
-        if(Auth::check()) {
+        if (Auth::check()) {
             return redirect()->route('home');
-        } 
+        }
         $data = Beranda::first();
         $image = Background::first()->background;
-        $cek= Grafik::where('aktif','Y')->first();
-        $kegg= Kegiatan::where('publish','Y')->get();
-        $keg = $kegg->map(function($item){
+        $cek = Grafik::where('aktif', 'Y')->first();
+        $kegg = Kegiatan::where('publish', 'Y')->get();
+        $keg = $kegg->map(function ($item) {
             $namaHari = Carbon::parse($item->tanggal)->format('D');
-            if($namaHari == 'Mon')
-            {
+            if ($namaHari == 'Mon') {
                 $item->hari = 'Senin';
-            }
-            elseif($namaHari == 'Tue')
-            {
+            } elseif ($namaHari == 'Tue') {
                 $item->hari = 'Selasa';
-            }
-            elseif($namaHari == 'Wed')
-            {
+            } elseif ($namaHari == 'Wed') {
                 $item->hari = 'Rabu';
-            }
-            elseif($namaHari == 'Thu')
-            {
+            } elseif ($namaHari == 'Thu') {
                 $item->hari = 'Kamis';
-            }
-            elseif($namaHari == 'Fri')
-            {
+            } elseif ($namaHari == 'Fri') {
                 $item->hari = 'Jumat';
-            }
-            elseif($namaHari == 'Sat')
-            {
+            } elseif ($namaHari == 'Sat') {
                 $item->hari = 'Sabtu';
-            }
-            elseif($namaHari == 'Sun')
-            {
+            } elseif ($namaHari == 'Sun') {
                 $item->hari = 'Minggu';
             }
             return $item;
         });
-        
-        if($cek == null)
-        {
+
+        if ($cek == null) {
             $judulchart = 'Grafik Tidak Ada Yg Aktif';
-        }
-        else {
+        } else {
             $judulchart = $cek->judul;
         }
         //dd($chart);
         //dd($data, $image);
-        return view('color.home',compact('data','image','judulchart','keg'));
+        return view('color.home', compact('data', 'image', 'judulchart', 'keg'));
     }
 
     public function chartdata()
     {
-        $cek = Grafik::where('aktif','Y')->first();
-        if($cek == null)
-        {
+        $cek = Grafik::where('aktif', 'Y')->first();
+        if ($cek == null) {
             $label = null;
             $data = null;
             $bgcolor = null;
             $bodercolor = null;
-        }
-        else {
-            $label = $cek->datagrafik->map(function($item){
-                return $item->label.' ('.$item->value.'%)';
+        } else {
+            $label = $cek->datagrafik->map(function ($item) {
+                return $item->label . ' (' . $item->value . '%)';
             });
-            $data  = $cek->datagrafik->map(function($item){
+            $data  = $cek->datagrafik->map(function ($item) {
                 return $item->value;
             });
-            $bgcolor = $cek->datagrafik->map(function($item){
+            $bgcolor = $cek->datagrafik->map(function ($item) {
                 return $item->bgcolor;
             });
-            
-            $bordercolor = $cek->datagrafik->map(function($item){
+
+            $bordercolor = $cek->datagrafik->map(function ($item) {
                 return $item->bordercolor;
             });
-            
         }
-        return response()->json([$label,$data, $bgcolor, $bordercolor]);
+        return response()->json([$label, $data, $bgcolor, $bordercolor]);
     }
 
     public function layanan()
     {
-        $data = Layanan::where('publish','Ya')->get();
-        return view('color.layanan',compact('data'));
+        $data = Layanan::where('publish', 'Ya')->get();
+        return view('color.layanan', compact('data'));
     }
 
     public function profil()
     {
         $data = Profil::first();
-        return view('color.profil',compact('data'));
+        return view('color.profil', compact('data'));
     }
 
     public function kontak()
     {
-        $kontak = Kontak::where('id',1)->get();
-        
-        $data = $kontak->map(function($item){
+        $kontak = Kontak::where('id', 1)->get();
+
+        $data = $kontak->map(function ($item) {
             $item->datas = json_decode($item->data, true);
             return $item;
         })->first();
-        return view('color.kontak',compact('data'));
+        return view('color.kontak', compact('data'));
     }
 
     public function ormas()
     {
         $ormas = Ormas::all();
-        $d = $ormas->map(function($item){
+        $d = $ormas->map(function ($item) {
             $item->datas = json_decode($item->data, true);
             return $item;
         });
-        return view('color.ormas',compact('d'));
+        return view('color.ormas', compact('d'));
     }
 
     public function riset()
     {
         return view('color.riset');
     }
-    
+
     public function galery($id)
     {
         $data = Galery::where('ormas_id', $id)->get();
         $ormas = $data->first();
-        if($ormas == null)
-        {
+        if ($ormas == null) {
             $namaOrmas = '';
-        }
-        else {
+        } else {
             $namaOrmas = json_decode($ormas->first()->ormas->data)->nama;
         }
-        
-        return view('color.galery',compact('data','namaOrmas'));
+
+        return view('color.galery', compact('data', 'namaOrmas'));
     }
 
     public function artikel()
     {
-        $data = Artikel::orderBy('created_at','desc')->paginate(5);
-        return view('color.artikel',compact('data'));
+        $data = Artikel::orderBy('created_at', 'desc')->paginate(5);
+        return view('color.artikel', compact('data'));
     }
 
     public function detailartikel($id)
     {
         $data = Artikel::where('id', $id)->get();
-        return view('color.detailartikel',compact('data'));
+        return view('color.detailartikel', compact('data'));
     }
 
     public function chart()
@@ -211,6 +205,6 @@ class FrontController extends Controller
     {
         $kat = Kategori::find($id);
         $data = $kat->dokumen;
-        return view('color.dokumen',compact('data','kat'));
+        return view('color.dokumen', compact('data', 'kat'));
     }
 }
