@@ -1,158 +1,136 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!--====== Title ======-->
     <title>KESBANGPOL</title>
 
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/fusion/assets/css/bootstrap.min.css">
+    <!-- Icon -->
+    <link rel="stylesheet" href="/fusion/assets/fonts/line-icons.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" href="/fusion/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/fusion/assets/css/owl.theme.css">
 
-    <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="/welcome/assets/images/favicon.png" type="image/png">
-
-    <!--====== Magnific Popup CSS ======-->
-    <link rel="stylesheet" href="/welcome/assets/css/magnific-popup.css">
-
-    <!--====== Slick CSS ======-->
-    <link rel="stylesheet" href="/welcome/assets/css/slick.css">
-
-    <!--====== Line Icons CSS ======-->
-    <link rel="stylesheet" href="/welcome/assets/css/LineIcons.css">
-
-    <!--====== Bootstrap CSS ======-->
-    <link rel="stylesheet" href="/welcome/assets/css/bootstrap.min.css">
-
-    <!--====== Default CSS ======-->
-    <link rel="stylesheet" href="/welcome/assets/css/default.css">
-
-    <!--====== Style CSS ======-->
-    <link rel="stylesheet" href="/welcome/assets/css/style.css">
+    <!-- Animate -->
+    <link rel="stylesheet" href="/fusion/assets/css/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="/fusion/assets/css/main.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" href="/fusion/assets/css/responsive.css">
 
 </head>
 
 <body>
-    <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
 
-    <!--====== PRELOADER PART START ======-->
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <a href="index.html" class="navbar-brand nav-link" style="color: red">KESBANGPOL</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="lni-menu"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    {{-- <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#hero-area">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#services">
+                                Services
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#team">
+                                Team
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#pricing">
+                                Pricing
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#testimonial">
+                                Testimonial
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">
+                                Contact
+                            </a>
+                        </li>
+                    </ul> --}}
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar End -->
 
-    <div class="preloader">
-        <div class="loader">
-            <div class="ytp-spinner">
-                <div class="ytp-spinner-container">
-                    <div class="ytp-spinner-rotator">
-                        <div class="ytp-spinner-left">
-                            <div class="ytp-spinner-circle"></div>
+        <!-- Hero Area Start -->
+        <div id="hero-area" class="hero-area-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                        <div class="contents">
+                            <h2 class="head-title">KESBANGPOL</h2>
+                            <p>Portal Informasi & Rekomendasi Penelitian Kesatuan
+                                Bangsa Dan
+                                Politik Kota Banjarmasin.</p>
+                            <div class="header-button">
+                                <a href="#" data-toggle="modal" data-target="#exampleModal"><img
+                                        src="/icon_kesbang/rekom2.png" width="90px"></a>
+                                <a href="#" data-toggle="modal" data-target="#kegiatanModal"><img
+                                        src="/icon_kesbang/jadwal2.png" width="90px"></a>
+                                <a href="#" data-toggle="modal" data-target="#ormasModal"><img
+                                        src="/icon_kesbang/ormas2.png" width="90px"></a>
+                                <a href="#" data-toggle="modal" data-target="#artikelModal"> <img
+                                        src="/icon_kesbang/artikel2.png" width="90px"></a>
+                                <a href="#" data-toggle="modal" data-target="#kontakModal"><img
+                                        src="/icon_kesbang/kontak2.png" width="90px"></a>
+                                <a href="#" data-toggle="modal" data-target="#dokumenModal"><img
+                                        src="/icon_kesbang/dokumen2.png" width="90px"></a>
+                                <a href="#" data-toggle="modal" data-target="#raModal">
+                                    <img src="/icon_kesbang/ra2.png" width="90px"></a>
+                                {{-- <a href="#" class="btn btn-common">Download Now</i></a>
+                                <a href="#" class="btn btn-border video-popup">Learn More</i></a> --}}
+                            </div>
                         </div>
-                        <div class="ytp-spinner-right">
-                            <div class="ytp-spinner-circle"></div>
+                    </div>
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                        <div class="intro-img">
+                            <img class="img-fluid" src="/fusion/assets/img/intro-mobile.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Hero Area End -->
+
+    </header>
+    <!-- Header Area wrapper End -->
+
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
     </div>
-
-    <!--====== PRELOADER PART ENDS ======-->
-
-
-    <!--====== NAVBAR TWO PART ENDS ======-->
-
-    <!--====== SLIDER PART START ======-->
-
-    <section id="home" class="slider_area">
-        <div id="carouselThree" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselThree" data-slide-to="0" class="active"></li>
-            </ol>
-
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="slider-content">
-                                    <h2 class="title text-center">KESBANGPOL</h2>
-                                    <p class="text text-center">Portal Informasi & Rekomendasi Penelitian Kesatuan
-                                        Bangsa Dan
-                                        Politik Kota Banjarmasin.</p>
-                                    <ul class="slider-btn rounded-buttons text-center">
-                                        <a href="#" data-toggle="modal" data-target="#exampleModal"><img
-                                                src="/icon_kesbang/rekom.png" width="90px"></a>
-                                        <a href="#" data-toggle="modal" data-target="#kegiatanModal"><img
-                                                src="/icon_kesbang/jadwal.png" width="90px"></a>
-                                        <a href="#" data-toggle="modal" data-target="#ormasModal"><img
-                                                src="/icon_kesbang/ormas.png" width="90px"></a>
-                                        <a href="#" data-toggle="modal" data-target="#artikelModal"> <img
-                                                src="/icon_kesbang/artikel.png" width="90px"></a>
-                                        <a href="#" data-toggle="modal" data-target="#kontakModal"><img
-                                                src="/icon_kesbang/kontak.png" width="90px"></a>
-                                        <a href="#" data-toggle="modal" data-target="#dokumenModal"><img
-                                                src="/icon_kesbang/dokumen.png" width="90px"></a>
-                                        <a href="#" data-toggle="modal" data-target="#raModal"><img
-                                                src="/icon_kesbang/ra.png" width="90px"></a>
-                                        {{-- <li><a class="main-btn rounded-one" data-toggle="modal"
-                                                data-target="#exampleModal" style="color: #0067f4">REKOMENDASI
-                                                PENELITIAN</a>
-                                        </li>
-                                        <li><a class="main-btn rounded-one" data-toggle="modal"
-                                                data-target="#kegiatanModal" href="#">JADWAL KEGIATAN</a></li>
-                                        <li><a class="main-btn rounded-one" href="#">ORMAS</a></li>
-                                        <li><a class="main-btn rounded-one" href="#">ARTIKEL</a></li>
-                                        <li><a class="main-btn rounded-one" href="#">KONTAK</a></li>
-                                        <li><a class="main-btn rounded-one" href="#">DOKUMEN</a></li>
-                                        <li><a class="main-btn rounded-one" href="#">REALISASI ANGGARAN</a></li> --}}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> <!-- row -->
-                    </div> <!-- container -->
-                    <div class="slider-image-box d-none d-lg-flex align-items-end">
-                        <div class="slider-image">
-                            <img src="/welcome/assets/images/slider/1.png" alt="Hero">
-                        </div> <!-- slider-imgae -->
-                    </div> <!-- slider-imgae box -->
-                </div> <!-- carousel-item -->
-            </div>
-
-            <a class="carousel-control-prev" href="#carouselThree" role="button" data-slide="prev">
-                <i class="lni lni-arrow-left"></i>
-            </a>
-            <a class="carousel-control-next" href="#carouselThree" role="button" data-slide="next">
-                <i class="lni lni-arrow-right"></i>
-            </a>
-        </div>
-    </section>
-
-
-    <!--====== BACK TOP TOP PART ENDS ======-->
-
-    <!--====== PART START ======-->
-
-    <!--
-    <section class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-">
-                    
-                </div>
-            </div>
-        </div>
-    </section>
--->
-
-    <!--====== MODAL ======-->
-
+    <!-- End Preloader -->
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-danger">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Login Aplikasi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -173,8 +151,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Login</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                    <button type="button" class="btn btn-danger">Login</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
                         data-target="#daftarModal">Daftar</button>
                 </div>
             </div>
@@ -185,7 +163,7 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-danger">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Daftar Rekomendasi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -214,7 +192,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Daftar</button>
+                    <button type="button" class="btn btn-danger">Daftar</button>
                 </div>
             </div>
         </div>
@@ -224,7 +202,7 @@
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-danger">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Jadwal Kegiatan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -233,7 +211,7 @@
                 <div class="modal-body">
                     <table class="table table-striped table-sm">
                         <thead>
-                            <tr class="bg-primary text-white"
+                            <tr class="bg-danger text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
                                 <td>NO</td>
                                 <td>TANGGAL</td>
@@ -251,7 +229,7 @@
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-danger">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Organisasi Masyarakat Terdaftar</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -260,7 +238,7 @@
                 <div class="modal-body">
                     <table class="table table-striped table-sm">
                         <thead>
-                            <tr class="bg-primary text-white"
+                            <tr class="bg-danger text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
                                 <td>NO</td>
                                 <td>NAMA ORMAS</td>
@@ -281,7 +259,7 @@
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-danger">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Artikel Informasi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -290,7 +268,7 @@
                 <div class="modal-body">
                     <table class="table table-striped table-sm">
                         <thead>
-                            <tr class="bg-primary text-white"
+                            <tr class="bg-danger text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
                                 <td>NO</td>
                                 <td>IMAGE</td>
@@ -309,7 +287,7 @@
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-danger">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Kontak</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -318,7 +296,7 @@
                 <div class="modal-body">
                     <table class="table table-striped table-sm">
                         <thead>
-                            <tr class="bg-primary text-white"
+                            <tr class="bg-danger text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
                                 <td>NO</td>
                                 <td>PARAMETER</td>
@@ -353,7 +331,7 @@
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-danger">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Dokumen</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -362,7 +340,7 @@
                 <div class="modal-body">
                     <table class="table table-striped table-sm">
                         <thead>
-                            <tr class="bg-primary text-white"
+                            <tr class="bg-danger text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
                                 <td>NO</td>
                                 <td>FILE</td>
@@ -382,7 +360,7 @@
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-danger">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Realisasi Anggaran</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -396,38 +374,20 @@
             </div>
         </div>
     </div>
-    
-    <!--====== Jquery js ======-->
-    <script src="/welcome/assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="/welcome/assets/js/vendor/modernizr-3.7.1.min.js"></script>
 
-    <!--====== Bootstrap js ======-->
-    <script src="/welcome/assets/js/popper.min.js"></script>
-    <script src="/welcome/assets/js/bootstrap.min.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/fusion/assets/js/jquery-min.js"></script>
+    <script src="/fusion/assets/js/popper.min.js"></script>
+    <script src="/fusion/assets/js/bootstrap.min.js"></script>
+    <script src="/fusion/assets/js/owl.carousel.min.js"></script>
+    <script src="/fusion/assets/js/wow.js"></script>
+    <script src="/fusion/assets/js/jquery.nav.js"></script>
+    <script src="/fusion/assets/js/scrolling-nav.js"></script>
+    <script src="/fusion/assets/js/jquery.easing.min.js"></script>
+    <script src="/fusion/assets/js/main.js"></script>
+    <script src="/fusion/assets/js/form-validator.min.js"></script>
+    <script src="/fusion/assets/js/contact-form-script.min.js"></script>
 
-    <!--====== Slick js ======-->
-    <script src="/welcome/assets/js/slick.min.js"></script>
-
-    <!--====== Magnific Popup js ======-->
-    <script src="/welcome/assets/js/jquery.magnific-popup.min.js"></script>
-
-    <!--====== Ajax Contact js ======-->
-    <script src="/welcome/assets/js/ajax-contact.js"></script>
-
-    <!--====== Isotope js ======-->
-    <script src="/welcome/assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="/welcome/assets/js/isotope.pkgd.min.js"></script>
-
-    <!--====== Scrolling Nav js ======-->
-    <script src="/welcome/assets/js/jquery.easing.min.js"></script>
-    <script src="/welcome/assets/js/scrolling-nav.js"></script>
-
-    <!--====== Main js ======-->
-    <script src="/welcome/assets/js/main.js"></script>
-
-    <script>
-
-    </script>
 </body>
 
 </html>
