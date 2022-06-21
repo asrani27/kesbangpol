@@ -1,7 +1,7 @@
 <?php
 
 Auth::routes();
-Route::get('logout', function() {
+Route::get('logout', function () {
     Auth::logout();
     return redirect()->to('/');
 })->name('logout');
@@ -11,7 +11,10 @@ Route::get('file-upload', 'FrontController@upload');
 Route::post('file-upload/upload', 'FrontController@uploadstore')->name('upload');
 
 //Route Untuk Halaman Depan (Frontend)
-Route::get('/', 'FrontController@index'); 
+Route::get('/', 'FrontController@index');
+Route::get('/login1', 'FrontController@login1');
+Route::get('/desain1', 'FrontController@desain1');
+Route::get('/desain2', 'FrontController@desain2');
 Route::get('/dok', 'FrontController@dokumen')->name('dokumen');
 Route::get('/berita', 'FrontController@artikel')->name('artikel');
 Route::get('/chart', 'FrontController@chart');
@@ -57,7 +60,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/background', 'BackgroundController@index')->name('admin.background');
     Route::post('/background/update', 'BackgroundController@update')->name('admin.updatebackground');
 
-    
+
     // Route Kegiatan For Admin
     Route::get('/jadwalkegiatan', 'KegiatanController@index')->name('admin.kegiatan');
     Route::get('/jadwalkegiatan/add', 'KegiatanController@add');
@@ -65,7 +68,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::post('/jadwalkegiatan/update/{id}', 'KegiatanController@update')->name('admin.updatekegiatan');
     Route::get('/jadwalkegiatan/edit/{id}', 'KegiatanController@edit');
     Route::get('/jadwalkegiatan/delete/{id}', 'KegiatanController@delete');
-    
+
     // Route Kategori For Admin
     Route::get('/kategori', 'KategoriController@index')->name('admin.kategori');
     Route::post('/kategori/simpan', 'KategoriController@store')->name('admin.savekategori');
@@ -89,7 +92,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::post('/grafikdataadmin/store', 'GrafikController@storedatagrafik')->name('admin.savedatagrafik');
     Route::post('/grafikdataadmin/update', 'GrafikController@updatedatagrafik')->name('admin.updatedatagrafik');
     Route::get('/grafikdata/delete/{id}', 'GrafikController@deletedatagrafik');
-    
+
 
     // Route Artikel For Admin
     Route::get('/artikel', 'ArtikelController@index')->name('admin.artikel');
@@ -155,4 +158,4 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::post('/gantipass/save', 'UserController@updatepass')->name('gantipass.save');
 });
 
-require __DIR__.'/web-sso.php';
+require __DIR__ . '/web-sso.php';
