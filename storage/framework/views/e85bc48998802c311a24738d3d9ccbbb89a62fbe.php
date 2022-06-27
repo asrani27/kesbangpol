@@ -31,8 +31,8 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="/welcome/assets/css/style.css">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 </head>
 
@@ -234,7 +234,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table id="example" class="table table-striped table-sm" width="100%">
+                    <table id="example" class="table table-striped table-sm no-wrap" style="width:100%">
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
@@ -273,7 +273,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-striped table-sm">
+                    <table class="table table-striped table-sm" id="exampleormas" style="width: 100%">
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
@@ -286,6 +286,19 @@
                             </tr>
                         </thead>
 
+                        <tbody>
+                            <?php $__currentLoopData = $ormas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                            <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
+                                <td><?php echo e(1 + $key); ?></td>
+                                <td><?php echo e($item['nama']); ?></td>
+                                <td><?php echo e($item['dasar_hukum']); ?></td>
+                                <td><?php echo e($item['bidang']); ?></td>
+                                <td><?php echo e($item['status']); ?></td>
+                                <td><?php echo e($item['keterangan']); ?></td>
+                            </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -479,11 +492,19 @@
             }
     </script>
 
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+    </script>
     <!-- DataTables -->
     <script>
         $(document).ready( function () {
-            $('#example').DataTable();
-        } );
+            $('#example').DataTable({
+                responsive: true
+            });
+            
+            $('#exampleormas').DataTable({
+                responsive: true
+            });
+        });
     </script>
 </body>
 

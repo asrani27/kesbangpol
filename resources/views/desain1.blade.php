@@ -31,8 +31,10 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="/welcome/assets/css/style.css">
 
+    {{--
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script> --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 </head>
 
@@ -242,7 +244,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table id="example" class="table table-striped table-sm" width="100%">
+                    <table id="example" class="table table-striped table-sm no-wrap" style="width:100%">
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
@@ -281,7 +283,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-striped table-sm">
+                    <table class="table table-striped table-sm" id="exampleormas" style="width: 100%">
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
@@ -294,6 +296,19 @@
                             </tr>
                         </thead>
 
+                        <tbody>
+                            @foreach ($ormas as $key => $item)
+
+                            <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
+                                <td>{{1 + $key}}</td>
+                                <td>{{$item['nama']}}</td>
+                                <td>{{$item['dasar_hukum']}}</td>
+                                <td>{{$item['bidang']}}</td>
+                                <td>{{$item['status']}}</td>
+                                <td>{{$item['keterangan']}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -487,11 +502,19 @@
             }
     </script>
 
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+    </script>
     <!-- DataTables -->
     <script>
         $(document).ready( function () {
-            $('#example').DataTable();
-        } );
+            $('#example').DataTable({
+                responsive: true
+            });
+            
+            $('#exampleormas').DataTable({
+                responsive: true
+            });
+        });
     </script>
 </body>
 
