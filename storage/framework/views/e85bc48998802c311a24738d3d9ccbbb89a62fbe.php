@@ -31,6 +31,9 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="/welcome/assets/css/style.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script>
+
 </head>
 
 <body>
@@ -231,16 +234,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-striped table-sm">
+                    <table id="example" class="table table-striped table-sm" width="100%">
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
                                 <td>NO</td>
                                 <td>TANGGAL</td>
+                                <td>JAM</td>
                                 <td>KEGIATAN</td>
+                                <td>BIDANG</td>
                             </tr>
                         </thead>
-
+                        <tbody>
+                            <?php $__currentLoopData = $kegiatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
+                                <td><?php echo e(1 + $key); ?></td>
+                                <td><?php echo e(\Carbon\Carbon::parse($item->tanggal)->format('d-m-Y')); ?></td>
+                                <td><?php echo e($item->jam); ?></td>
+                                <td><?php echo e($item->kegiatan); ?></td>
+                                <td><?php echo e($item->bidang == null ? '': $item->bidang->nama); ?></td>
+                            </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -462,6 +477,13 @@
                     z.type = "password";
                 }
             }
+    </script>
+
+    <!-- DataTables -->
+    <script>
+        $(document).ready( function () {
+            $('#example').DataTable();
+        } );
     </script>
 </body>
 

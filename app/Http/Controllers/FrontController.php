@@ -27,7 +27,8 @@ class FrontController extends Controller
             return redirect('/home');
         }
 
-        return view('desain1');
+        $kegiatan = Kegiatan::orderBy('id', 'DESC')->get();
+        return view('desain1', compact('kegiatan'));
     }
 
     public function login1()

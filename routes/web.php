@@ -163,4 +163,19 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::post('/gantipass/save', 'UserController@updatepass')->name('gantipass.save');
 });
 
+
+Route::group(['middleware' => ['auth', 'role:bidang']], function () {
+    // Route Riset For User
+    Route::get('/bidang/kegiatan', 'BidangController@kegiatan')->name('bidang.kegiatan');
+    Route::get('/bidang/kegiatan/add', 'BidangController@kegiatanadd');
+    Route::post('/bidang/kegiatan/simpan', 'BidangController@kegiatanstore');
+    Route::post('/bidang/kegiatan/update/{id}', 'BidangController@kegiatanupdate');
+    Route::get('/bidang/kegiatan/edit/{id}', 'BidangController@kegiatanedit');
+    Route::get('/bidang/kegiatan/delete/{id}', 'BidangController@kegiatandelete');
+
+    //Route Ganti Password
+    Route::get('/bidang/gantipass', 'BidangController@gantipass')->name('gantipass');
+    Route::post('/bidang/gantipass/save', 'BidangController@updatepass')->name('gantipass.bidang');
+});
+
 require __DIR__ . '/web-sso.php';

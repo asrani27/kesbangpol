@@ -28,16 +28,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->hasRole('admin'))
-        {
+        if (Auth::user()->hasRole('admin')) {
             $totalRiset = count(Riset::all());
             $totalOrmas = count(Ormas::all());
             $totalUser = count(User::all());
-            return view('backend.dashboard_admin',compact('totalRiset','totalOrmas','totalUser'));
-        }
-        else {
+            return view('backend.dashboard_admin', compact('totalRiset', 'totalOrmas', 'totalUser'));
+        } elseif (Auth::user()->hasRole('bidang')) {
+
+            return view('backend.dashboard_bidang');
+        } else {
             $countRiset = Auth::user()->riset->count();
-            return view('backend.dashboard_user',compact('countRiset'));
+            return view('backend.dashboard_user', compact('countRiset'));
         }
     }
 

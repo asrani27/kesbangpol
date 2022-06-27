@@ -31,6 +31,9 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="/welcome/assets/css/style.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script>
+
 </head>
 
 <body>
@@ -239,16 +242,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-striped table-sm">
+                    <table id="example" class="table table-striped table-sm" width="100%">
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
                                 <td>NO</td>
                                 <td>TANGGAL</td>
+                                <td>JAM</td>
                                 <td>KEGIATAN</td>
+                                <td>BIDANG</td>
                             </tr>
                         </thead>
-
+                        <tbody>
+                            @foreach ($kegiatan as $key => $item)
+                            <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
+                                <td>{{1 + $key}}</td>
+                                <td>{{\Carbon\Carbon::parse($item->tanggal)->format('d-m-Y')}}</td>
+                                <td>{{$item->jam}}</td>
+                                <td>{{$item->kegiatan}}</td>
+                                <td>{{$item->bidang == null ? '': $item->bidang->nama}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -470,6 +485,13 @@
                     z.type = "password";
                 }
             }
+    </script>
+
+    <!-- DataTables -->
+    <script>
+        $(document).ready( function () {
+            $('#example').DataTable();
+        } );
     </script>
 </body>
 

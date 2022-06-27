@@ -79,6 +79,14 @@
       </li>
       <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i> <span>Log Out</span></a></li>
     </ul>
+    @elseif(auth()->user()->hasRole('bidang'))
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">MAIN MENU</li>
+      <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+      <li><a href="{{route('bidang.kegiatan')}}"><i class="fa fa-credit-card"></i> <span>Jadwal Kegiatan</span></a></li>
+      <li><a href="{{route('gantipass')}}"><i class="fa fa-user-plus"></i> <span>Ganti Password</span></a></li>
+      <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i> <span>Log Out</span></a></li>
+    </ul>
     @else
     Tidak Memiliki Role
     <ul class="sidebar-menu" data-widget="tree">
