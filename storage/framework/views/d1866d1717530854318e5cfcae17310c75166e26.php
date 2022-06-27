@@ -1,12 +1,10 @@
-@extends('layouts.master')
-
-@push('add_css')
+<?php $__env->startPush('add_css'); ?>
 <!-- bootstrap datepicker -->
 <link rel="stylesheet"
-  href="{{url('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
-@endpush
+  href="<?php echo e(url('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')); ?>">
+<?php $__env->stopPush(); ?>
 
-@section('konten')
+<?php $__env->startSection('konten'); ?>
 <div class="row">
   <div class="col-md-12">
     <div class="box box-info">
@@ -16,12 +14,13 @@
       <!-- /.box-header -->
       <!-- form start -->
 
-      @if(auth()->user()->hasRole('bidang'))
-      <form class="form-horizontal" method="POST" action="{{route('gantipass.bidang')}}" enctype="multipart/form-data">
-        @else
-        <form class="form-horizontal" method="POST" action="{{route('gantipass.save')}}" enctype="multipart/form-data">
-          @endif
-          {{ csrf_field() }}
+      <?php if(auth()->user()->hasRole('bidang')): ?>
+      <form class="form-horizontal" method="POST" action="<?php echo e(route('gantipass.bidang')); ?>" enctype="multipart/form-data">
+        <?php else: ?>
+        <form class="form-horizontal" method="POST" action="<?php echo e(route('gantipass.save')); ?>" enctype="multipart/form-data">
+          <?php endif; ?>
+          <?php echo e(csrf_field()); ?>
+
           <div class="box-body">
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-2 control-label">Password Baru</label>
@@ -63,11 +62,11 @@
     </div>
   </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('add_js')
+<?php $__env->startPush('add_js'); ?>
 <!-- bootstrap datepicker -->
-<script src="{{url('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="<?php echo e(url('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')); ?>"></script>
 <script>
   //Date picker
     $('#datepicker').datepicker({
@@ -101,4 +100,5 @@
         }
     }
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

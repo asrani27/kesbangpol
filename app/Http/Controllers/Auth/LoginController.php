@@ -42,20 +42,19 @@ class LoginController extends Controller
     {
         $login = request()->input('username');
         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        
-        if(Auth::attempt([$field => $login, 'password' => request()->password])) 
-        {
+
+        if (Auth::attempt([$field => $login, 'password' => request()->password])) {
             $pesan = array(
-            'message' => 'SELAMAT DATANG DI MEMBER AREA', 
-            'alert-type' => 'success');
+                'message' => 'SELAMAT DATANG DI MEMBER AREA',
+                'alert-type' => 'success'
+            );
             return redirect('/home')->with($pesan);
-        } 
-        else 
-        {
+        } else {
             $pesan = array(
-            'message' => 'Telp atau Password Tidak Ditemukan', 
-            'alert-type' => 'error');
-            
+                'message' => 'Username atau Password Salah',
+                'alert-type' => 'error'
+            );
+
             return back()->with($pesan);
         }
     }

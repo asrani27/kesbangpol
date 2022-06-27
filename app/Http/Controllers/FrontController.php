@@ -21,9 +21,20 @@ use Validator;
 
 class FrontController extends Controller
 {
-    public function desain1()
+    public function index()
     {
-        return view('desain1');
+        if (Auth::check()) {
+            return redirect('/home');
+        }
+
+        $kegiatan = Kegiatan::orderBy('id', 'DESC')->get();
+        $orma = Ormas::all();
+        $ormas = $orma->map(function ($item) {
+            $item->datas = json_decode($item->data, true);
+            return $item->datas;
+        });
+
+        return view('desain1', compact('kegiatan', 'ormas'));
     }
 
     public function login1()
@@ -68,7 +79,7 @@ class FrontController extends Controller
 
         return response()->json($output);
     }
-    public function index()
+    public function index2()
     {
         if (Auth::check()) {
             return redirect()->route('home');

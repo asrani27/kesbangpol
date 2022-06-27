@@ -35,4 +35,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Riset::class, 'user_id');
     }
+
+    public function bidang()
+    {
+        return $this->hasOne(Bidang::class, 'user_id');
+    }
 }

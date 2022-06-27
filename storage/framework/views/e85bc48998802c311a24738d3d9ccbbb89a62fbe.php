@@ -31,6 +31,9 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="/welcome/assets/css/style.css">
 
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
 </head>
 
 <body>
@@ -148,25 +151,27 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
+                <form class="form-horizontal" method="POST" action="<?php echo e(route('login')); ?>">
+                    <div class="modal-body">
+                        <?php echo e(csrf_field()); ?>
+
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
+                            <label for="exampleInputEmail1">username</label>
+                            <input type="text" name="username" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="Enter email">
                         </div><br />
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword1"
                                 placeholder="Password">
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Login</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#daftarModal">Daftar</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#daftarModal">Daftar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -181,31 +186,39 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
+                <form class="form-horizontal" method="POST" action="<?php echo e(route('daftar')); ?>">
+                    <?php echo e(csrf_field()); ?>
+
+                    <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nama Lengkap</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" name="name"
-                                aria-describedby="emailHelp" placeholder="Nama Lengkap">
+                                aria-describedby="emailHelp" placeholder="Nama Lengkap" required>
                         </div><br />
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
                             <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" name="email" placeholder="Enter email">
+                                aria-describedby="emailHelp" name="email" placeholder="Enter email" required>
                         </div><br />
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="Password">
+                            <input type="password" id="passwordreg" name="password" class="form-control"
+                                placeholder="Password" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Konfirmasi Password</label>
-                            <input type="password" name="confirm_password" class="form-control" placeholder="Password">
+                            <input type="password" id="password-confirmreg" name="password_confirmation"
+                                class="form-control" placeholder="Password" required>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Daftar</button>
-                </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1"></label>
+                            <input type="checkbox" onclick="showPassDaftar()"> Tampilkan Password
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Daftar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -221,23 +234,33 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-striped table-sm">
+                    <table id="example" class="table table-striped table-sm no-wrap" style="width:100%">
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
                                 <td>NO</td>
                                 <td>TANGGAL</td>
+                                <td>JAM</td>
                                 <td>KEGIATAN</td>
+                                <td>BIDANG</td>
                             </tr>
                         </thead>
-
+                        <tbody>
+                            <?php $__currentLoopData = $kegiatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
+                                <td><?php echo e(1 + $key); ?></td>
+                                <td><?php echo e(\Carbon\Carbon::parse($item->tanggal)->format('d-m-Y')); ?></td>
+                                <td><?php echo e($item->jam); ?></td>
+                                <td><?php echo e($item->kegiatan); ?></td>
+                                <td><?php echo e($item->bidang == null ? '': $item->bidang->nama); ?></td>
+                            </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
-
 
     <div class="modal fade bd-example-modal-lg" id="ormasModal" tabindex="-1" role="dialog"
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -250,7 +273,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-striped table-sm">
+                    <table class="table table-striped table-sm" id="exampleormas" style="width: 100%">
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
@@ -263,6 +286,19 @@
                             </tr>
                         </thead>
 
+                        <tbody>
+                            <?php $__currentLoopData = $ormas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                            <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
+                                <td><?php echo e(1 + $key); ?></td>
+                                <td><?php echo e($item['nama']); ?></td>
+                                <td><?php echo e($item['dasar_hukum']); ?></td>
+                                <td><?php echo e($item['bidang']); ?></td>
+                                <td><?php echo e($item['status']); ?></td>
+                                <td><?php echo e($item['keterangan']); ?></td>
+                            </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -296,7 +332,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="modal fade bd-example-modal-lg" id="kontakModal" tabindex="-1" role="dialog"
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -341,7 +376,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="modal fade bd-example-modal-lg" id="dokumenModal" tabindex="-1" role="dialog"
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -390,6 +424,7 @@
             </div>
         </div>
     </div>
+
     <!--====== Jquery js ======-->
     <script src="/welcome/assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="/welcome/assets/js/vendor/modernizr-3.7.1.min.js"></script>
@@ -417,9 +452,59 @@
 
     <!--====== Main js ======-->
     <script src="/welcome/assets/js/main.js"></script>
-
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script>
+        <?php if(Session::has('message')): ?>
+      var type = "<?php echo e(Session::get('alert-type', 'info')); ?>";
+      switch(type){
+          case 'info':
+              toastr.info("<?php echo e(Session::get('message')); ?>");
+              break;
+          
+          case 'warning':
+              toastr.warning("<?php echo e(Session::get('message')); ?>");
+              break;
+  
+          case 'error':
+              toastr.error("<?php echo e(Session::get('message')); ?>");
+              break;
+              
+          case 'success':
+              toastr.success("<?php echo e(Session::get('message')); ?>");
+              break;
+  
+      }
+    <?php endif; ?>
+    </script>
+    <script>
+        function showPassDaftar()
+            {
+                var x = document.getElementById("passwordreg");
+                var z = document.getElementById("password-confirmreg");
+                if (x.type === "password" && z.type === "password") {
+                    x.type = "text";
+                    z.type = "text";
+                } else {
+                    x.type = "password";
+                    z.type = "password";
+                }
+            }
+    </script>
 
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+    </script>
+    <!-- DataTables -->
+    <script>
+        $(document).ready( function () {
+            $('#example').DataTable({
+                responsive: true
+            });
+            
+            $('#exampleormas').DataTable({
+                responsive: true
+            });
+        });
     </script>
 </body>
 
