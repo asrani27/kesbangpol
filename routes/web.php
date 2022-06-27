@@ -102,6 +102,11 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::post('/artikel/simpan', 'ArtikelController@store')->name('admin.saveartikel');
     Route::post('/artikel/update/{id}', 'ArtikelController@update')->name('admin.updateartikel');
 
+    // Route Bidang For Admin
+    Route::get('/bidang', 'BidangController@index')->name('admin.bidang');
+    Route::get('/bidang/akun/{id}', 'BidangController@akun');
+    Route::get('/bidang/reset/{id}', 'BidangController@reset');
+
     // Route Ormas For Admin
     Route::get('/ormas_admin', 'AdminController@ormas')->name('admin.ormas');
     Route::get('/ormas_admin/add', 'AdminController@addormas')->name('admin.addormas');

@@ -21,8 +21,12 @@ use Validator;
 
 class FrontController extends Controller
 {
-    public function desain1()
+    public function index()
     {
+        if (Auth::check()) {
+            return redirect('/home');
+        }
+
         return view('desain1');
     }
 
@@ -68,7 +72,7 @@ class FrontController extends Controller
 
         return response()->json($output);
     }
-    public function index()
+    public function index2()
     {
         if (Auth::check()) {
             return redirect()->route('home');
