@@ -331,12 +331,22 @@
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
                                 <td>NO</td>
-                                <td>IMAGE</td>
+                                <td>TGL</td>
                                 <td>JUDUL</td>
                                 <td>DESKRIPSI</td>
                             </tr>
                         </thead>
 
+                        <tbody>
+                            @foreach ($artikel as $key => $item)
+                            <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
+                                <td>{{1 + $key}}</td>
+                                <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
+                                <td>{{$item->judul}}</td>
+                                <td>{!!$item->isi!!}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
