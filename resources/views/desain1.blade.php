@@ -330,7 +330,7 @@
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
-                                <td>NO</td>
+                                <td width="10px">NO</td>
                                 <td>TGL</td>
                                 <td>JUDUL</td>
                                 <td width="50%">DESKRIPSI</td>
