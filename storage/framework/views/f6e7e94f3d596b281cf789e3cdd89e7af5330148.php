@@ -31,9 +31,7 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="/welcome/assets/css/style.css">
 
-    {{--
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script> --}}
+    
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 </head>
@@ -100,17 +98,7 @@
                                                 src="/icon_kesbang/dokumen.png" width="90px"></a>
                                         <a href="#" data-toggle="modal" data-target="#raModal"><img
                                                 src="/icon_kesbang/ra.png" width="90px"></a>
-                                        {{-- <li><a class="main-btn rounded-one" data-toggle="modal"
-                                                data-target="#exampleModal" style="color: #0067f4">REKOMENDASI
-                                                PENELITIAN</a>
-                                        </li>
-                                        <li><a class="main-btn rounded-one" data-toggle="modal"
-                                                data-target="#kegiatanModal" href="#">JADWAL KEGIATAN</a></li>
-                                        <li><a class="main-btn rounded-one" href="#">ORMAS</a></li>
-                                        <li><a class="main-btn rounded-one" href="#">ARTIKEL</a></li>
-                                        <li><a class="main-btn rounded-one" href="#">KONTAK</a></li>
-                                        <li><a class="main-btn rounded-one" href="#">DOKUMEN</a></li>
-                                        <li><a class="main-btn rounded-one" href="#">REALISASI ANGGARAN</a></li> --}}
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -163,9 +151,10 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                <form class="form-horizontal" method="POST" action="<?php echo e(route('login')); ?>">
                     <div class="modal-body">
-                        {{ csrf_field() }}
+                        <?php echo e(csrf_field()); ?>
+
                         <div class="form-group">
                             <label for="exampleInputEmail1">username</label>
                             <input type="text" name="username" class="form-control" id="exampleInputEmail1"
@@ -197,8 +186,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal" method="POST" action="{{ route('daftar') }}">
-                    {{ csrf_field() }}
+                <form class="form-horizontal" method="POST" action="<?php echo e(route('daftar')); ?>">
+                    <?php echo e(csrf_field()); ?>
+
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nama Lengkap</label>
@@ -256,15 +246,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($kegiatan as $key => $item)
+                            <?php $__currentLoopData = $kegiatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
-                                <td>{{1 + $key}}</td>
-                                <td>{{\Carbon\Carbon::parse($item->tanggal)->format('d-m-Y')}}</td>
-                                <td>{{$item->jam}}</td>
-                                <td>{{$item->kegiatan}}</td>
-                                <td>{{$item->bidang == null ? '': $item->bidang->nama}}</td>
+                                <td><?php echo e(1 + $key); ?></td>
+                                <td><?php echo e(\Carbon\Carbon::parse($item->tanggal)->format('d-m-Y')); ?></td>
+                                <td><?php echo e($item->jam); ?></td>
+                                <td><?php echo e($item->kegiatan); ?></td>
+                                <td><?php echo e($item->bidang == null ? '': $item->bidang->nama); ?></td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -297,17 +287,17 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($ormas as $key => $item)
+                            <?php $__currentLoopData = $ormas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                             <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
-                                <td>{{1 + $key}}</td>
-                                <td>{{$item['nama']}}</td>
-                                <td>{{$item['dasar_hukum']}}</td>
-                                <td>{{$item['bidang']}}</td>
-                                <td>{{$item['status']}}</td>
-                                <td>{{$item['keterangan']}}</td>
+                                <td><?php echo e(1 + $key); ?></td>
+                                <td><?php echo e($item['nama']); ?></td>
+                                <td><?php echo e($item['dasar_hukum']); ?></td>
+                                <td><?php echo e($item['bidang']); ?></td>
+                                <td><?php echo e($item['status']); ?></td>
+                                <td><?php echo e($item['keterangan']); ?></td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -338,16 +328,16 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($artikel as $key => $item)
+                            <?php $__currentLoopData = $artikel; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
-                                <td>{{1 + $key}}</td>
-                                <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
-                                <td>{{$item->judul}}</td>
+                                <td><?php echo e(1 + $key); ?></td>
+                                <td><?php echo e(\Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')); ?></td>
+                                <td><?php echo e($item->judul); ?></td>
                                 <td>
-                                    <font size="11px">{!!$item->isi!!}</font>
+                                    <font size="11px"><?php echo $item->isi; ?></font>
                                 </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -477,27 +467,27 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script>
-        @if(Session::has('message'))
-      var type = "{{ Session::get('alert-type', 'info') }}";
+        <?php if(Session::has('message')): ?>
+      var type = "<?php echo e(Session::get('alert-type', 'info')); ?>";
       switch(type){
           case 'info':
-              toastr.info("{{ Session::get('message') }}");
+              toastr.info("<?php echo e(Session::get('message')); ?>");
               break;
           
           case 'warning':
-              toastr.warning("{{ Session::get('message') }}");
+              toastr.warning("<?php echo e(Session::get('message')); ?>");
               break;
   
           case 'error':
-              toastr.error("{{ Session::get('message') }}");
+              toastr.error("<?php echo e(Session::get('message')); ?>");
               break;
               
           case 'success':
-              toastr.success("{{ Session::get('message') }}");
+              toastr.success("<?php echo e(Session::get('message')); ?>");
               break;
   
       }
-    @endif
+    <?php endif; ?>
     </script>
     <script>
         function showPassDaftar()
