@@ -326,7 +326,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-striped table-sm" id="exampleartikel">
+                    <table class="table table-striped table-sm" id="exampleartikel" style="width: 100%">
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
@@ -343,7 +343,9 @@
                                 <td>{{1 + $key}}</td>
                                 <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                 <td>{{$item->judul}}</td>
-                                <td style="font-size: 11px;">{!!$item->isi!!}</td>
+                                <td>
+                                    <font size="11px">{!!$item->isi!!}</font>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
