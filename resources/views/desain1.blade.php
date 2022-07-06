@@ -333,7 +333,7 @@
                                 <td>NO</td>
                                 <td>TGL</td>
                                 <td>JUDUL</td>
-                                <td>DESKRIPSI</td>
+                                <td width="50%">DESKRIPSI</td>
                             </tr>
                         </thead>
 
