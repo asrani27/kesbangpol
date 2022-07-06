@@ -330,10 +330,10 @@
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
-                                <td width="10px">NO</td>
+                                <td>NO</td>
                                 <td>TGL</td>
                                 <td>JUDUL</td>
-                                <td width="50%">DESKRIPSI</td>
+                                <td>DESKRIPSI</td>
                             </tr>
                         </thead>
 
@@ -343,8 +343,7 @@
                                 <td>{{1 + $key}}</td>
                                 <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                 <td>{{$item->judul}}</td>
-                                <td>
-                                    <font size="11px">{!!$item->isi!!}</font>
+                                <td>{!!$item->isi!!}
                                 </td>
                             </tr>
                             @endforeach
