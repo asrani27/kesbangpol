@@ -28,13 +28,14 @@ class FrontController extends Controller
         }
 
         $kegiatan = Kegiatan::orderBy('id', 'DESC')->get();
+        $artikel = Artikel::orderBy('id', 'DESC')->get();
         $orma = Ormas::all();
         $ormas = $orma->map(function ($item) {
             $item->datas = json_decode($item->data, true);
             return $item->datas;
         });
 
-        return view('desain1', compact('kegiatan', 'ormas'));
+        return view('desain1', compact('kegiatan', 'ormas', 'artikel'));
     }
 
     public function login1()
