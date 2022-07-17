@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Ormas;
-use App\Profil;
-use App\Kontak;
-use App\Layanan;
-use App\Kegiatan;
-use App\Beranda;
-use App\Kategori;
-use App\Galery;
-use App\Artikel;
-use App\Background;
-use App\Grafik;
-use App\DataGrafik;
-use Carbon\Carbon;
 use Auth;
+use App\Ormas;
 use Validator;
+use App\Galery;
+use App\Grafik;
+use App\Kontak;
+use App\Profil;
+use App\Artikel;
+use App\Beranda;
+use App\Dokumen;
+use App\Layanan;
+use App\Kategori;
+use App\Kegiatan;
+use Carbon\Carbon;
+use App\Background;
+use App\DataGrafik;
+use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
@@ -28,6 +29,7 @@ class FrontController extends Controller
         }
 
         $kegiatan = Kegiatan::orderBy('id', 'DESC')->get();
+        $dokumen = Dokumen::orderBy('id', 'DESC')->get();
         $artikel = Artikel::orderBy('id', 'DESC')->get();
         $orma = Ormas::all();
         $ormas = $orma->map(function ($item) {
@@ -35,7 +37,7 @@ class FrontController extends Controller
             return $item->datas;
         });
 
-        return view('desain1', compact('kegiatan', 'ormas', 'artikel'));
+        return view('desain1', compact('kegiatan', 'ormas', 'artikel', 'dokumen'));
     }
 
     public function login1()
