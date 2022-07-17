@@ -325,9 +325,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <table class="table table-striped table-sm table-responsive" id="exampleartikel"
-                        style="width: 100%">
+                <div class="modal-body table-responsive">
+                    <table class="table table-striped table-sm" id="exampleartikel" style="width: 100%">
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
