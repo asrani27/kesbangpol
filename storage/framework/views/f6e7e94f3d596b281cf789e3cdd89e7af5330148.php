@@ -323,7 +323,7 @@
                                 <td width="10px">NO</td>
                                 <td>TGL</td>
                                 <td>JUDUL</td>
-                                <td width="50%">DESKRIPSI</td>
+                                <td>DESKRIPSI</td>
                             </tr>
                         </thead>
 
@@ -333,8 +333,8 @@
                                 <td><?php echo e(1 + $key); ?></td>
                                 <td><?php echo e(\Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')); ?></td>
                                 <td><?php echo e($item->judul); ?></td>
-                                <td>
-                                    <font size="11px"><?php echo $item->isi; ?></font>
+                                <td><?php echo $item->isi; ?>
+
                                 </td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

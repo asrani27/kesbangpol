@@ -330,10 +330,14 @@
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
+<<<<<<< HEAD
                                 <td width="10px">NO</td>
+=======
+                                <td>NO</td>
+                                <td>Image</td>
+>>>>>>> 1786a217b6c41423aa6eb04111875eba0e5f4ddf
                                 <td>TGL</td>
                                 <td>JUDUL</td>
-                                <td>DESKRIPSI</td>
                             </tr>
                         </thead>
 
@@ -341,10 +345,9 @@
                             @foreach ($artikel as $key => $item)
                             <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
                                 <td>{{1 + $key}}</td>
+                                <td><img src="/storage/artikel/{{$dt->gambar}}" width="50px"></td>
                                 <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                 <td>{{$item->judul}}</td>
-                                <td>{!!$item->isi!!}
-                                </td>
                             </tr>
                             @endforeach
                         </tbody>
