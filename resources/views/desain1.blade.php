@@ -345,7 +345,7 @@
                             @foreach ($artikel as $key => $item)
                             <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
                                 <td>{{1 + $key}}</td>
-                                <td><img src="/storage/artikel/{{$dt->gambar}}" width="50px"></td>
+                                <td><img src="/storage/artikel/{{$item->gambar}}" width="50px"></td>
                                 <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                 <td>{{$item->judul}}</td>
                             </tr>
