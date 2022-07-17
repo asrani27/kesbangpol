@@ -531,6 +531,7 @@
     { "width": "2%" },
     null,
     null,
+    null,
     null
   ]
             });
