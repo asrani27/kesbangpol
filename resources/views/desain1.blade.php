@@ -527,6 +527,12 @@
             
             $('#exampleartikel').DataTable({
                 responsive: true
+                "columns": [
+    { "width": "2%" },
+    null,
+    null,
+    null
+  ]
             });
         });
     </script>
