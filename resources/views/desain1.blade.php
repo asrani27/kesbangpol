@@ -330,12 +330,8 @@
                         <thead>
                             <tr class="bg-primary text-white"
                                 style="font-family: Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold">
-<<<<<<< HEAD
-                                <td width="10px">NO</td>
-=======
                                 <td>NO</td>
                                 <td>Image</td>
->>>>>>> 1786a217b6c41423aa6eb04111875eba0e5f4ddf
                                 <td>TGL</td>
                                 <td>JUDUL</td>
                             </tr>
