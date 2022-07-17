@@ -529,9 +529,9 @@
                 autoWidth: false,
                 columns: [
                     { "width": "5%" },
+                    { "width": "15%" },
                     { "width": "10%" },
-                    { "width": "10%" },
-                    { "width": "75%" }                ]
+                    { "width": "70%" }                ]
             });
         });
     </script>
