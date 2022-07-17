@@ -31,9 +31,7 @@
         @foreach ($data as $dt)
         <tr>
           <td>{{$no++}}</td>
-          <td><img src="/storage/artikel/{{$dt->gambar}}" width="100px">
-            <img
-              src="{{ Thumbnail::src('/05-02-2021-8179screencapture-localhost-8000-report-2021-02-04-23_41_31.png', 'public')->smartcrop(200, 200)->url() }}">
+          <td><img src="/storage/artikel/{{$dt->gambar}}" width="50px">
           </td>
           <td>{{$dt->judul}}</td>
           <td>{{$dt->publish}}</td>

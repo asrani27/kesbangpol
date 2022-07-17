@@ -29,9 +29,7 @@
         <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
           <td><?php echo e($no++); ?></td>
-          <td><img src="/storage/artikel/<?php echo e($dt->gambar); ?>" width="100px">
-            <img
-              src="<?php echo e(Thumbnail::src('/05-02-2021-8179screencapture-localhost-8000-report-2021-02-04-23_41_31.png', 'public')->smartcrop(200, 200)->url()); ?>">
+          <td><img src="/storage/artikel/<?php echo e($dt->gambar); ?>" width="50px">
           </td>
           <td><?php echo e($dt->judul); ?></td>
           <td><?php echo e($dt->publish); ?></td>
