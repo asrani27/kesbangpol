@@ -526,7 +526,7 @@
             });
             
             $('#exampleartikel').DataTable({
-                responsive: true
+                autoWidth: true
             });
         });
     </script>
