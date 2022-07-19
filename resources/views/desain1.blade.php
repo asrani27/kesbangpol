@@ -549,5 +549,71 @@
         });
     </script>
 </body>
+<script>
+    @if(Auth::check())
+    $(function() { 
+        window.location.replace("{{ url('/') }}");
+    });
+    @else
+    
+    console.log('ok');
+    function clickLogin() {
+        var sso = new BjmSSO();
+        sso.loginWindow(function(result) {
+            console.log(result);
+            if (result['status']) {
+                sendToServer(result);
+            }
+        });
+    }
+
+    function sendToServer(result) {
+        var user = result['data']['user'];
+        var token = result['data']['key'];
+        var formData = new FormData();
+        for ( var key in user ) {
+            formData.append(key, user[key]);
+        }
+        formData.append('id_sso', user['id']);
+        formData.append('token', token);
+        formData.append('_token', '{{ csrf_token() }}');
+        $.ajax({
+            type: "POST",
+            url: "{{ route('sso.register') }}",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function(data, textStatus, jqXHR) {
+                // $(".is-invalid").removeClass("is-invalid");
+                if (data['status'] == true) {
+                    location.reload();
+                }
+                else {
+                    console.log(data['message']);
+                    toastr.error(data['message']);
+                    $("div").removeClass("loadingsso");
+                }  
+            },
+            error: function(data, textStatus, jqXHR) {
+                console.log(data);
+                console.log('Login Gagal!');
+            },
+        });
+    }
+
+    $(function() { 
+        @if (request('is_sso'))
+        var sso = new BjmSSO();
+        sso.login(function(result) {
+            console.log(result);
+            if (result['status']) {
+                sendToServer(result);
+            }
+        });
+        @endif
+    });
+    @endif
+</script>
 
 </html>
