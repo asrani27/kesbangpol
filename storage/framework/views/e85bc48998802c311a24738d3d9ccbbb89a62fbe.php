@@ -34,6 +34,11 @@
     
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://bapintar.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.css">
+    <script src="https://bapintar.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.js"></script>
+
 </head>
 
 <body>
@@ -104,9 +109,9 @@
                             </div>
                         </div> <!-- row -->
                     </div> <!-- container -->
-                    <div class="slider-image-box d-none d-lg-flex align-items-end">
+                    <div class="slider-image-box d-none d-lg-flex align-items-end" style="height: 60%">
                         <div class="slider-image">
-                            <img src="/welcome/assets/images/slider/1.png" alt="Hero">
+                            &nbsp;&nbsp;&nbsp;&nbsp;<img src="/icon_kesbang/hut771.png" width="80%">
                         </div> <!-- slider-imgae -->
                     </div> <!-- slider-imgae box -->
                 </div> <!-- carousel-item -->
@@ -539,5 +544,71 @@
         });
     </script>
 </body>
+<script>
+    <?php if(Auth::check()): ?>
+    $(function() { 
+        window.location.replace("<?php echo e(url('/')); ?>");
+    });
+    <?php else: ?>
+    
+    console.log('ok');
+    function clickLogin() {
+        var sso = new BjmSSO();
+        sso.loginWindow(function(result) {
+            console.log(result);
+            if (result['status']) {
+                sendToServer(result);
+            }
+        });
+    }
+
+    function sendToServer(result) {
+        var user = result['data']['user'];
+        var token = result['data']['key'];
+        var formData = new FormData();
+        for ( var key in user ) {
+            formData.append(key, user[key]);
+        }
+        formData.append('id_sso', user['id']);
+        formData.append('token', token);
+        formData.append('_token', '<?php echo e(csrf_token()); ?>');
+        $.ajax({
+            type: "POST",
+            url: "<?php echo e(route('sso.register')); ?>",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function(data, textStatus, jqXHR) {
+                // $(".is-invalid").removeClass("is-invalid");
+                if (data['status'] == true) {
+                    location.reload();
+                }
+                else {
+                    console.log(data['message']);
+                    toastr.error(data['message']);
+                    $("div").removeClass("loadingsso");
+                }  
+            },
+            error: function(data, textStatus, jqXHR) {
+                console.log(data);
+                console.log('Login Gagal!');
+            },
+        });
+    }
+
+    $(function() { 
+        <?php if(request('is_sso')): ?>
+        var sso = new BjmSSO();
+        sso.login(function(result) {
+            console.log(result);
+            if (result['status']) {
+                sendToServer(result);
+            }
+        });
+        <?php endif; ?>
+    });
+    <?php endif; ?>
+</script>
 
 </html>

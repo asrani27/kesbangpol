@@ -121,9 +121,9 @@
                             </div>
                         </div> <!-- row -->
                     </div> <!-- container -->
-                    <div class="slider-image-box d-none d-lg-flex align-items-end">
+                    <div class="slider-image-box d-none d-lg-flex align-items-end" style="height: 60%">
                         <div class="slider-image">
-                            <img src="/welcome/assets/images/slider/1.png" alt="Hero">
+                            &nbsp;&nbsp;&nbsp;&nbsp;<img src="/icon_kesbang/hut771.png" width="80%">
                         </div> <!-- slider-imgae -->
                     </div> <!-- slider-imgae box -->
                 </div> <!-- carousel-item -->
