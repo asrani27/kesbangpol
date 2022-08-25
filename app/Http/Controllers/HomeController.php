@@ -29,6 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('admin')) {
+            //return view('backend.phpinfo');
+
             $totalRiset = count(Riset::all());
             $totalOrmas = count(Ormas::all());
             $totalUser = count(User::all());

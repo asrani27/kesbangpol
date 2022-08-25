@@ -28,11 +28,13 @@ class ArtikelController extends Controller
 
     public function store(Request $req)
     {
-        if ($req->hasFile('file')) {
+
+        if ($req->file != NULL) {
             $filename = $req->file->getClientOriginalName();
             $filename = date('d-m-Y-') . rand(1, 9999) . $filename;
             $req->file->storeAs('/public/artikel', $filename);
         }
+        dd($filename);
         $s = new Artikel;
         $s->judul = $req->judul;
         $s->isi = $req->isi;
