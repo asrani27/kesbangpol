@@ -37,7 +37,14 @@ class FrontController extends Controller
             return $item->datas;
         });
 
-        return view('desain1', compact('kegiatan', 'ormas', 'artikel', 'dokumen'));
+
+        $cek = Grafik::where('aktif', 'Y')->first();
+        if ($cek == null) {
+            $judulchart = 'Grafik Tidak Ada Yg Aktif';
+        } else {
+            $judulchart = $cek->judul;
+        }
+        return view('desain1', compact('kegiatan', 'ormas', 'artikel', 'dokumen','judulchart'));
     }
 
     public function login1()

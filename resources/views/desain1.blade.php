@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="https://bapintar.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.css">
     <script src="https://bapintar.banjarmasinkota.go.id/vendor/bjm-sso/bjm-sso.js"></script>
 
+    <script type="text/javascript" src="{{url('js/Chart.js')}}"></script>
+
 </head>
 
 <body>
@@ -456,7 +458,8 @@
                 </div>
                 <div class="modal-body">
                     <table class="table table-striped table-sm">
-                        GRAFIK?
+                        <h3 class="text-center">{{$judulchart}}</h3>
+                        <canvas id="myChart"></canvas>
                     </table>
                 </div>
             </div>
@@ -621,4 +624,41 @@
     @endif
 </script>
 
+<script>
+    $(document).ready(function() {
+
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+        }
+
+        $.ajax({url: window.location.origin+"/chartdata", success: function(result){
+            var label = result[0];
+            var data = result[1];
+            var bgcolor = result[2];
+            var bordercolor = result[3];
+            new Chart(document.getElementById("myChart"), {
+                type: 'horizontalBar',
+                data: {
+                labels: label,
+                datasets: [
+                    {
+                    label: "Persentase",
+                    backgroundColor: bgcolor,
+                    data: data
+                    }
+                ]
+                },
+                options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: '-'
+                    }
+                },
+            })
+        }
+    });
+        
+        });
+</script>
 </html>
