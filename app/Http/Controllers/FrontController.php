@@ -123,8 +123,7 @@ class FrontController extends Controller
         } else {
             $judulchart = $cek->judul;
         }
-        //dd($chart);
-        //dd($data, $image);
+        
         return view('color.home', compact('data', 'image', 'judulchart', 'keg'));
     }
 
