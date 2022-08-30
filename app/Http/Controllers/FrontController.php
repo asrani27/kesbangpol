@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Ormas;
+use App\Saran;
 use Validator;
 use App\Galery;
 use App\Grafik;
@@ -44,7 +45,7 @@ class FrontController extends Controller
         } else {
             $judulchart = $cek->judul;
         }
-        return view('desain1', compact('kegiatan', 'ormas', 'artikel', 'dokumen','judulchart'));
+        return view('desain1', compact('kegiatan', 'ormas', 'artikel', 'dokumen', 'judulchart'));
     }
 
     public function login1()
@@ -52,6 +53,23 @@ class FrontController extends Controller
         return view('desain1.login');
     }
 
+    public function sarandigital()
+    {
+        return view('sarandigital');
+    }
+
+    public function storesarandigital(Request $req)
+    {
+        $n = new Saran;
+        $n->message = $req->message;
+        $n->save();
+
+        $pesan = array(
+            'message' => 'Saran/Pesan Anda Berhasil Terkirim',
+            'alert-type' => 'success'
+        );
+        return back()->with($pesan);
+    }
     public function desain2()
     {
         return view('desain2');
@@ -123,7 +141,7 @@ class FrontController extends Controller
         } else {
             $judulchart = $cek->judul;
         }
-        
+
         return view('color.home', compact('data', 'image', 'judulchart', 'keg'));
     }
 

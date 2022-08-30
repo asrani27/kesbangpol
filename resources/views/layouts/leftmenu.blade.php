@@ -39,6 +39,7 @@
       <li><a href="{{route('admin.grafik')}}"><i class="fa fa-bar-chart"></i> <span>Grafik</span></a></li>
       <li><a href="{{route('admin.dokumen')}}"><i class="fa fa-file"></i> <span>Dokumen</span></a></li>
       <li><a href="{{route('admin.kategori')}}"><i class="fa fa-tasks"></i> <span>Kategori Dokumen</span></a></li>
+      <li><a href="{{route('admin.saran')}}"><i class="fa fa-comments"></i> <span>Saran Digitan</span></a></li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-toggle-down"></i>

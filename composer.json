@@ -16,6 +16,7 @@
         "laravel/tinker": "~1.0",
         "rolandstarke/laravel-thumbnail": "^1.0",
         "santigarcor/laratrust": "5.0.*",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "yajra/laravel-datatables-oracle": "8.0"
     },
     "require-dev": {

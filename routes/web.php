@@ -13,6 +13,8 @@ Route::post('file-upload/upload', 'FrontController@uploadstore')->name('upload')
 //Route Untuk Halaman Depan (Frontend)
 Route::get('/', 'FrontController@index');
 Route::get('/login1', 'FrontController@login1');
+Route::get('/sarandigital', 'FrontController@sarandigital');
+Route::post('/sarandigital', 'FrontController@storesarandigital');
 Route::get('/desain1', 'FrontController@desain1');
 Route::get('/desain2', 'FrontController@desain2');
 Route::get('/dok', 'FrontController@dokumen')->name('dokumen');
@@ -51,6 +53,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::post('/riset_admin/updatestatus', 'AdminController@updatestatusriset')->name('admin.updatestatusriset');
     Route::post('/riset_admin/update/{id}', 'AdminController@updateriset')->name('admin.updateriset');
 
+    Route::get('/admin/saran', 'SaranController@index')->name('admin.saran');
+    Route::get('/sarandigital/qrcode', 'SaranController@qrcode');
     // Route Account For Admin
     Route::get('/account', 'AdminController@account')->name('admin.account');
     Route::get('/account/delete/{id}', 'AdminController@delaccount');
