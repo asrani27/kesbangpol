@@ -123,7 +123,7 @@
                             </div>
                         </div> <!-- row -->
                     </div> <!-- container -->
-                    <div class="slider-image-box d-none d-lg-flex align-items-end" style="height: 60%">
+                    <div class="slider-image-box d-none d-lg-flex align-items-end mt-5" style="height: 60%">
                         <div class="slider-image">
                             &nbsp;&nbsp;&nbsp;&nbsp;<img src="/assets/496.png" width="80%">
                         </div> <!-- slider-imgae -->
