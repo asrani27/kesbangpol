@@ -15,8 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('kategori', Kategori::all());
-        view()->share('siteTitle', 'HDTuto.com');
+        // View::share('kategori', Kategori::all());
+        // view()->share('siteTitle', 'HDTuto.com');
     }
 
     /**
