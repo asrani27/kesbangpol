@@ -608,7 +608,7 @@
             },
             error: function(data, textStatus, jqXHR) {
                 console.log(data);
-                console.log('Login Gagal!,---');
+                console.log('Login Gagal!');
             },
         });
     }
