@@ -339,7 +339,9 @@
                             <tr style="font-family: Arial, Helvetica, sans-serif;font-size:11px;font-weight:bold">
                                 <td><?php echo e(1 + $key); ?></td>
                                 <td><?php echo e(\Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s')); ?></td>
-                                <td><img src="/storage/artikel/<?php echo e($item->gambar); ?>" width="50px"></td>
+                                <td>
+                                    
+                                </td>
                                 <td><?php echo e($item->judul); ?></td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -20,6 +20,7 @@ class AuthSsoController extends Controller
 
     public function register(Request $req)
     {
+        return response()->json('test');
         $req->validate([
             'name'   => 'required|string|max:255',
             'email'  => 'required|string|email|max:255',
@@ -29,7 +30,6 @@ class AuthSsoController extends Controller
 
         // cek apakah id sso sudah sudah login / valid
         $isValid = $this->_isValid($req->id_sso, $req->token);
-        dd($isValid);
         if ($isValid) {
             // cek apakah id sso sudah terdaftar
             $user = User::where('id_sso', $req->id_sso)->first();
