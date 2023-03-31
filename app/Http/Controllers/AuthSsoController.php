@@ -21,54 +21,54 @@ class AuthSsoController extends Controller
     public function register(Request $req)
     {
         return response()->json('test');
-        $req->validate([
-            'name'   => 'required|string|max:255',
-            'email'  => 'required|string|email|max:255',
-            'id_sso' => 'required',
-            'token'  => 'required',
-        ]);
+        // $req->validate([
+        //     'name'   => 'required|string|max:255',
+        //     'email'  => 'required|string|email|max:255',
+        //     'id_sso' => 'required',
+        //     'token'  => 'required',
+        // ]);
 
-        // cek apakah id sso sudah sudah login / valid
-        $isValid = $this->_isValid($req->id_sso, $req->token);
-        if ($isValid) {
-            // cek apakah id sso sudah terdaftar
-            $user = User::where('id_sso', $req->id_sso)->first();
-            if ($user == null) {
-                $roleUser = Role::where('name', 'user')->first();
-                $user = User::where('email', $req->email)->first();
-                if ($user == null) {
-                    $user = new User;
-                    $user->name = $req->name;
-                    $user->email = $req->email;
-                    $user->password = bcrypt($this->password);
-                    $user->id_sso = $req->id_sso;
-                    $user->save();
-                    $user->roles()->attach($roleUser);
-                } else {
-                    // auto sync
-                    $user->id_sso = $req->id_sso;
-                    $user->save();
-                }
+        // // cek apakah id sso sudah sudah login / valid
+        // $isValid = $this->_isValid($req->id_sso, $req->token);
+        // if ($isValid) {
+        //     // cek apakah id sso sudah terdaftar
+        //     $user = User::where('id_sso', $req->id_sso)->first();
+        //     if ($user == null) {
+        //         $roleUser = Role::where('name', 'user')->first();
+        //         $user = User::where('email', $req->email)->first();
+        //         if ($user == null) {
+        //             $user = new User;
+        //             $user->name = $req->name;
+        //             $user->email = $req->email;
+        //             $user->password = bcrypt($this->password);
+        //             $user->id_sso = $req->id_sso;
+        //             $user->save();
+        //             $user->roles()->attach($roleUser);
+        //         } else {
+        //             // auto sync
+        //             $user->id_sso = $req->id_sso;
+        //             $user->save();
+        //         }
 
-                $this->_registerApp($req->id_sso);
-            }
+        //         $this->_registerApp($req->id_sso);
+        //     }
 
-            // login
-            if ($user) {
-                Auth::login($user);
-                if (Auth::check()) {
-                    return response()->json([
-                        'status'  => true,
-                        'message' => 'Login Berhasil...',
-                    ]);
-                }
-            }
-        }
+        //     // login
+        //     if ($user) {
+        //         Auth::login($user);
+        //         if (Auth::check()) {
+        //             return response()->json([
+        //                 'status'  => true,
+        //                 'message' => 'Login Berhasil...',
+        //             ]);
+        //         }
+        //     }
+        // }
 
-        return response()->json([
-            'status'  => false,
-            'message' => 'Login Gagal...x',
-        ]);
+        // return response()->json([
+        //     'status'  => false,
+        //     'message' => 'Login Gagal...x',
+        // ]);
     }
 
     public function sync(Request $req)
