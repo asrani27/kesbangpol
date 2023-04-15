@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
+use App\Kategori;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use App\Kategori;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (app()->environment('remote')) {
+        if (env('FORCE_HTTPS', false)) {
             URL::forceScheme('https');
         }
     }
