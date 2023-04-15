@@ -585,6 +585,7 @@
             contentType: false,
             dataType: "json",
             success: function(data, textStatus, jqXHR) {
+                console.log(data);
                 // $(".is-invalid").removeClass("is-invalid");
                 if (data['status'] == true) {
                     location.reload();
