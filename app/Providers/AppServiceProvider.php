@@ -15,8 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // View::share('kategori', Kategori::all());
-        // view()->share('siteTitle', 'HDTuto.com');
+        if (app()->environment('remote')) {
+            URL::forceScheme('https');
+        }
     }
 
     /**
