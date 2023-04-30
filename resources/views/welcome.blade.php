@@ -3,7 +3,6 @@
     <div class="content-bg">
             <img src={{url("storage/background/{$image}")}} alt="Home" />
         </div> 
-        <!-- end content-bg -->
         <!-- begin container --><br /><br /><br /><br /><br /><br /><br /><br />
         <div class="row action-box">
                 <!-- begin col-9 -->
