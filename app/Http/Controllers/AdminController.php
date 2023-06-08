@@ -609,6 +609,7 @@ class AdminController extends Controller
 
     public function risetPDF($id)
     {
+        ob_end_clean();
         $export = PDF::loadView('backend.riset.printpdf');
         return $export->download('risetpdf' . date("Y-m-d-H:m:s") . '.pdf');
         // $e = PDF::loadView('testing');
