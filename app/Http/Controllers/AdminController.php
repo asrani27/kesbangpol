@@ -22,6 +22,26 @@ use Storage;
 class AdminController extends Controller
 {
 
+    public function riset2()
+    {
+        $data = Riset::orderBy('id', 'DESC')->paginate(10);
+
+        return view('backend.riset.riset_admin2', compact('data'));
+    }
+
+    public function diproses()
+    {
+        $data = Riset::orderBy('id', 'DESC')->where('status', 'pending')->paginate(10);
+
+        return view('backend.riset.riset_admin2', compact('data'));
+    }
+
+    public function diterima()
+    {
+        $data = Riset::orderBy('id', 'DESC')->where('status', 'pending')->paginate(10);
+
+        return view('backend.riset.riset_admin2', compact('data'));
+    }
     public function riset()
     {
         return view('backend.riset.riset_admin');
