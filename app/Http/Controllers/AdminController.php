@@ -609,9 +609,6 @@ class AdminController extends Controller
 
     public function risetPDF($id)
     {
-        ob_end_clean();
-        $export = PDF::loadView('backend.riset.printpdf');
-        return $export->download('risetpdf' . date("Y-m-d-H:m:s") . '.pdf');
         // $e = PDF::loadView('testing');
         // return $e->download('risetpdf'.date("Y-m-d-H:m:s").'.pdf');
 
@@ -638,6 +635,8 @@ class AdminController extends Controller
         $random = Carbon::now()->format('d-m-Y-h:i:s');
         //dd('test');
         //return view('backend.riset.printdata',compact('map','dt'));
+
+        ob_end_clean();
         $export = PDF::loadView('backend.riset.printdata', compact('map', 'dt'))->setPaper('legal', 'portrait');
         return $export->download('risetpdf' . date("Y-m-d-H:m:s") . '.pdf');
         //array(0,0,609.4488,880.433)git add
