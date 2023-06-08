@@ -56,7 +56,7 @@
                       <a class="btn btn-xs btn-primary isi-nomor" data-id="{{$item->id}}" data-toggle="tooltip">Isi Nomor </a>
                       @else
                           
-                      {{$item->nosurat}}
+                      <a class="btn btn-xs btn-default edit-nomor" data-nosurat="{{$item->nosurat}}"  data-id="{{$item->id}}" data-toggle="tooltip">{{$item->nosurat}}</a>
                       @endif
                     </td>
                     <td>{{json_decode($item->data)->nama}}</td>

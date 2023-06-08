@@ -40,8 +40,7 @@
                       <a class="btn btn-xs btn-primary isi-nomor" data-id="<?php echo e($item->id); ?>" data-toggle="tooltip">Isi Nomor </a>
                       <?php else: ?>
                           
-                      <?php echo e($item->nosurat); ?>
-
+                      <a class="btn btn-xs btn-default edit-nomor" data-nosurat="<?php echo e($item->nosurat); ?>"  data-id="<?php echo e($item->id); ?>" data-toggle="tooltip"><?php echo e($item->nosurat); ?></a>
                       <?php endif; ?>
                     </td>
                     <td><?php echo e(json_decode($item->data)->nama); ?></td>
