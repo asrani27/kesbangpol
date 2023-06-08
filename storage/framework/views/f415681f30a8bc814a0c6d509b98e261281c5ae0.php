@@ -6,7 +6,7 @@
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<meta content="en-us" http-equiv="Content-Language" />
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	{{-- <title>PEMERINTAH KOTA BANJARMASIN</title> --}}
+	
 	<style type="text/css">
 		.auto-style5 {
 			font-size: large;
@@ -97,7 +97,7 @@
 		<table style="width: 100%">
 			<tr>
 				<td style="width: 10%" valign="top">
-					{{-- <img src="{{ url('/assets/logk.jpg') }}" height="100px"> --}}
+					
 
 					<img src="http://4.bp.blogspot.com/-VzfWlC-3IYQ/T6u3HQL6i4I/AAAAAAAABWc/JW8NDkz4D4k/s1600/LOGO_BANJARMASIN.JPG"
 						height="100px">
@@ -122,12 +122,12 @@
 	<p class="auto-style13"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
 		<strong><span class="auto-style24">REKOMENDASI PELAKSANAAN
 				PENDATAAN/PENELITIAN/SURVEY<br />
-			</span></strong><span class="auto-style26"><strong>NOMOR : 072/{{$dt->nosurat}} -
+			</span></strong><span class="auto-style26"><strong>NOMOR : 072/-
 				Sekr/Bakesbangpol</strong></span>
 	</p>
 	<p class="auto-style14"><span class="auto-style23">Membaca&nbsp;&nbsp;&nbsp; : Surat
-			dari &nbsp; {{$dt->data->universitas}}<br />
-			Nomor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{$dt->data->no_surat}}<br />
+			dari &nbsp; <br />
+			Nomor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <br />
 			Perihal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Ijin Penelitian/
 			Permintaan Data/ Survey/ Observasi<br />
 			<br />
@@ -156,84 +156,7 @@
 	<p class="auto-style14"><span class="auto-style23"><strong>Memberikan
 				Rekomendasi Pendataan/ Penelitian/ Survey Kepada :</strong></span><span class="auto-style15"><br />
 		</span>
-	<table style="width: 100%; height: 125px">
-		<tr>
-			<td class="auto-style7" style="width: 15px">a.</td>
-			<td class="auto-style7" style="width: 30%">Nama</td>
-			<td class="auto-style7" style="width: 13px"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->nama}}</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">b.</td>
-			<td class="auto-style7">NIK/NIP/NIM/NPM</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->nik}}</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">c.</td>
-			<td class="auto-style7">Alamat</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->alamat}}</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">d.</td>
-			<td class="auto-style7">Judul Penelitian</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->judul}}</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">e.</td>
-			<td class="auto-style7">Tujuan Penelitian</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->tujuan}}</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">f.</td>
-			<td class="auto-style7">Lokasi/ Tempat Penelitian</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->tempat}}</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">g.</td>
-			<td class="auto-style7">Lamanya Pelaksanaan Penelitian</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->lama_waktu}} Bulan</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">h.</td>
-			<td class="auto-style7">Bidang Penelitian</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->jurusan}}</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">i.</td>
-			<td class="auto-style7">Pekerjaan Peneliti</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->pekerjaan}}</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">j.</td>
-			<td class="auto-style7">Nama Dan Jabatan Penanggung jawab</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->penanggung_jawab}}</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">k.</td>
-			<td class="auto-style7">Anggota Penelitian</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">
-				@foreach ($dt->data->anggota as $a)
-				{{ $a}},
-				@endforeach
-			</td>
-		</tr>
-		<tr>
-			<td class="auto-style7" style="width: 15px">l</td>
-			<td class="auto-style7">Nama Organisasi/Lembaga</td>
-			<td class="auto-style7"><strong>:</strong></td>
-			<td class="auto-style7">{{$dt->data->universitas}}</td>
-		</tr>
-	</table>
+        
 	</p>
 	<p class="auto-style21">Ketentuan :<br />
 	<table style="width: 100%">
@@ -267,74 +190,10 @@
 	</p>
 
 	<table style="width: 100%">
-		<tr>
-			<td style="width: 422px" class="auto-style7">Tembusan :<br />
-				<?php
-			$no =1;
-			?>
-				@foreach ($dt->data->tembusan as $tembusan)
-				{{$no++}}. {{$tembusan}}<br>
-				@endforeach
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-			</td>
-			<td><span class="auto-style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIKELUARKAN di&nbsp;&nbsp;&nbsp;
-					: Banjarmasin</span><br />
-				<span class="auto-style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<span class="auto-style28">PADA TANGGAL&nbsp;&nbsp;&nbsp;&nbsp; :</span></span><span
-					class="auto-style28"><br />
-				</span><span class="auto-style23">
-
-					@if(strtolower($map->data->jabatan) == 'kepala badan kesbangpol')
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->jabatan}}<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					&nbsp;&nbsp;&nbsp;&nbsp; <strong>{{$map->data->nama}}</strong><br />
-					&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->pangkat}}<br />
-					&nbsp;&nbsp;&nbsp;&nbsp; NIP. {{$map->data->nip}} </span>
-			</td>
-
-			@elseif(strtolower($map->data->jabatan) == 'sekretaris')
-
-			<strong>a.n Kepala Badan</strong><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->jabatan}}<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			&nbsp;&nbsp;&nbsp;&nbsp; <strong>{{$map->data->nama}}</strong><br />
-			&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->pangkat}}<br />
-			&nbsp;&nbsp;&nbsp;&nbsp; NIP. {{$map->data->nip}} </span></td>
-
-			@else
-			<strong>a.n Kepala Badan<br />
-				&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</strong>Sekretaris<br />
-
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; u.b<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->jabatan}}<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			&nbsp;&nbsp;&nbsp;&nbsp; <strong>{{$map->data->nama}}</strong><br />
-			&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->pangkat}}<br />
-			&nbsp;&nbsp;&nbsp;&nbsp; NIP. {{$map->data->nip}} </span></td>
-		</tr>
-		@endif
+        
 	</table>
 
 
 </body>
-
-<script>
-	$( document ).ready(function() {
-		  window.print();
-	});
-</script>
 
 </html>
