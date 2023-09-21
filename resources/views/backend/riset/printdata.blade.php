@@ -289,7 +289,7 @@
 				</span><span class="auto-style23">
 
 			@if(strtolower($map->data->jabatan) == 'kepala badan')
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->jabatan}}<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>{{$map->data->jabatan}}</strong><br />
 					<br />
 					<br />
 					<br />
@@ -316,7 +316,8 @@
 				&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</strong>Sekretaris<br />
 
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; u.b<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->jabatan}}<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kepala Bidang<br />
+			{{-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->jabatan}}<br /> --}}
 			<br />
 			<br />
 			<br />
