@@ -71,6 +71,7 @@ class UserController extends Controller
         $data          = $datajson;
 
         $save          = new Riset;
+        $save->nama    = $req->nama;
         $save->data    = $data;
         $save->user_id = $user_id;
         $save->save();
@@ -134,6 +135,7 @@ class UserController extends Controller
         $user_id       = Auth::user()->id;
         $data          = $datajson;
         $save          = Riset::find($id);
+        $save->nama    = $req->nama;
         $save->data    = $data;
         $save->user_id = $user_id;
         $save->save();
