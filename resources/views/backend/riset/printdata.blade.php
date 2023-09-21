@@ -312,7 +312,7 @@
 			&nbsp;&nbsp;&nbsp;&nbsp; NIP. {{$map->data->nip}} </span></td>
 
 			@else
-			<strong>a.n Kepala Badan<br />
+			<strong>Kepala Badan<br />
 				{{-- &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</strong>Sekretaris<br />
 
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; u.b<br />
