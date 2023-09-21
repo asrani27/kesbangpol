@@ -10,22 +10,19 @@
     <div class="box-header">
       <h3 class="box-title">Daftar Surat Rekomendasi Penelitian</h3>
       
-      <div class="pull-right box-tools">
-        {{-- <a href="/riset_admin/diproses" class="btn btn-warning btn-sm" data-toggle="tooltip" title="">
-          DI PROSES
-        </a>
-        <a href="/riset_admin/diterima" class="btn btn-success btn-sm" data-toggle="tooltip" title="">
-          DI TERIMA
-        </a>
-        <a href="/riset_admin/direvisi" class="btn btn-info btn-sm" data-toggle="tooltip" title="">
-          DI REVISI
-        </a>
-        <a href="/riset_admin/ditolak" class="btn btn-danger btn-sm" data-toggle="tooltip" title="">
-          DI TOLAK
-        </a>
-        <a href="/riset_admin/semua" class="btn btn-primary btn-sm" data-toggle="tooltip" title="">
-          SEMUA
-        </a> --}}
+      <div class="box-tools">
+        <form method="get" action="/riset_admin/search">
+          {{csrf_field()}}
+        <div class="input-group input-group-sm" style="width: 150px;">
+          <input type="text" name="search" class="form-control pull-right" value="{{old('search')}}" placeholder="Search">
+
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+            <a href="/riset_admin/sync" class="btn btn-default">sync</a>
+          </div>
+        </div>
+
+        </form>
       </div>
     </div>
     <!-- /.box-header -->
@@ -49,7 +46,7 @@
               @foreach ($data as $key => $item)
                   
                   <tr>
-                    <td>{{$data->firstItem() + 1}}</td>
+                    <td>{{$data->firstItem() + $key}}</td>
                     <td>RISET{{$item->id}}</td>
                     <td>
                       @if ($item->nosurat == null)
@@ -77,7 +74,7 @@
               @endforeach
             </tbody>
         </table>
-        {{$data->links()}}
+        {{$data->appends(request()->query())->links()}}
     </div>
       <!-- /.box-body -->
 </div>

@@ -17,11 +17,33 @@ use App\Layanan;
 use App\Pejabat;
 use App\Beranda;
 use PDF;
+use PHPUnit\Util\Json;
 use Storage;
 
 class AdminController extends Controller
 {
 
+    public function sync()
+    {
+        $data = Riset::get()->map(function ($item) {
+            $item->nama = json_decode($item->data)->nama;
+            $item->save();
+            return $item;
+        });
+        $pesan = array(
+            'message' => 'Berhasil Di sync',
+            'alert-type' => 'success'
+        );
+        return back()->with($pesan);
+    }
+    public function cari_riset()
+    {
+        $search = request()->get('search');
+
+        $data = Riset::where('nama', 'LIKE', '%' . $search . '%')->orderBy('id', 'DESC')->paginate(10);
+        request()->flash();
+        return view('backend.riset.riset_admin2', compact('data'));
+    }
     public function riset2()
     {
         $data = Riset::orderBy('id', 'DESC')->paginate(10);

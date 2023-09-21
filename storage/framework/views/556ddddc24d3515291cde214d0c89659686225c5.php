@@ -8,8 +8,20 @@
     <div class="box-header">
       <h3 class="box-title">Daftar Surat Rekomendasi Penelitian</h3>
       
-      <div class="pull-right box-tools">
-        
+      <div class="box-tools">
+        <form method="get" action="/riset_admin/search">
+          <?php echo e(csrf_field()); ?>
+
+        <div class="input-group input-group-sm" style="width: 150px;">
+          <input type="text" name="search" class="form-control pull-right" value="<?php echo e(old('search')); ?>" placeholder="Search">
+
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+            <a href="/riset_admin/sync" class="btn btn-default">sync</a>
+          </div>
+        </div>
+
+        </form>
       </div>
     </div>
     <!-- /.box-header -->
@@ -33,7 +45,7 @@
               <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   
                   <tr>
-                    <td><?php echo e($data->firstItem() + 1); ?></td>
+                    <td><?php echo e($data->firstItem() + $key); ?></td>
                     <td>RISET<?php echo e($item->id); ?></td>
                     <td>
                       <?php if($item->nosurat == null): ?>
@@ -61,7 +73,7 @@
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
-        <?php echo e($data->links()); ?>
+        <?php echo e($data->appends(request()->query())->links()); ?>
 
     </div>
       <!-- /.box-body -->

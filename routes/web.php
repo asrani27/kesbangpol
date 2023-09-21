@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/riset_admin/download/{filename}', 'DownloadController@download');
     Route::get('/riset_admin/pdf/{id}', 'AdminController@risetPDF');
     Route::get('/riset_admin', 'AdminController@riset2')->name('admin.riset');
+    Route::get('/riset_admin/search', 'AdminController@cari_riset');
+    Route::get('/riset_admin/sync', 'AdminController@sync');
     Route::get('/riset_admin/diproses', 'AdminController@diproses');
     Route::get('/riset_admin/get_riset', 'AdminController@getRiset');
     Route::post('/riset_admin/isinomor', 'AdminController@isinomor')->name('admin.isinomor');
