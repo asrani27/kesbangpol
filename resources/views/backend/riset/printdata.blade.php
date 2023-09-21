@@ -121,14 +121,14 @@
 
 	<p class="auto-style13"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
 		<strong><span class="auto-style24">REKOMENDASI PELAKSANAAN
-				PENDATAAN/PENELITIAN/SURVEY<br />
+				PENDATAAN/PENELITIAN/SURVEY/OBSERVASI<br />
 			</span></strong><span class="auto-style26"><strong>NOMOR : 072/{{$dt->nosurat}} -
 				Sekr/Bakesbangpol</strong></span>
 	</p>
 	<p class="auto-style14"><span class="auto-style23">Membaca&nbsp;&nbsp;&nbsp; : Surat
 			dari &nbsp; {{$dt->data->universitas}}<br />
 			Nomor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{$dt->data->no_surat}}<br />
-			Perihal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Ijin Penelitian/
+			Perihal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Izin Penelitian/
 			Permintaan Data/ Survey/ Observasi<br />
 			<br />
 			<strong>Mengingat&nbsp; :<br />
@@ -154,7 +154,7 @@
 			</table>
 		</span></p>
 	<p class="auto-style14"><span class="auto-style23"><strong>Memberikan
-				Rekomendasi Pendataan/ Penelitian/ Survey Kepada :</strong></span><span class="auto-style15"><br />
+				Rekomendasi Pendataan/ Penelitian/ Survey/ Observasi Kepada :</strong></span><span class="auto-style15"><br />
 		</span>
 	<table style="width: 100%; height: 125px">
 		<tr>
@@ -259,7 +259,7 @@
 		</tr>
 		<tr>
 			<td class="auto-style7">5.</td>
-			<td class="auto-style21">Setelah selesai melakukan riset/ penelitian / survey dan membuat
+			<td class="auto-style21">Setelah selesai melakukan riset/ penelitian / survey / Observasi dan membuat
 				proposal/ skripsi/ tesis maka diwajibkan menyerahkan hasilnya kepada
 				Badan Kesbangpol kota Banjarmasin.</td>
 		</tr>
