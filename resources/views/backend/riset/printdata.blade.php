@@ -288,7 +288,7 @@
 					class="auto-style28"><br />
 				</span><span class="auto-style23">
 
-					@if(strtolower($map->data->jabatan) == 'kepala badan kesbangpol')
+					@if(strtolower($map->data->jabatan) == 'Kepala Badan')
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->jabatan}}<br />
 					<br />
 					<br />

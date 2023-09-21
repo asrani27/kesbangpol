@@ -8,7 +8,7 @@
 @section('konten')
 <div class="box box-info">
     <div class="box-header">
-      <h3 class="box-title">Daftar Surat Rekomendasi Penelitian</h3>
+      <h3 class="box-title">Daftar Surat Rekomendasi Penelitian.</h3>
       
       <div class="pull-right box-tools">
         <button type="button" class="btn btn-warning btn-sm diproses" data-toggle="tooltip" title="">
