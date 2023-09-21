@@ -315,8 +315,8 @@
 			&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<strong>Kepala Badan<br />
 				{{-- &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</strong>Sekretaris<br />
 
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; u.b<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->jabatan}}<br /> --}}
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; u.b<br /> --}}
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$map->data->jabatan}}<br />
 			<br />
 			<br />
 			<br />
