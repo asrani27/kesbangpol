@@ -34,7 +34,7 @@ class ArtikelController extends Controller
             $filename = date('d-m-Y-') . rand(1, 9999) . $filename;
             $req->file->storeAs('/public/artikel', $filename);
         }
-        dd($filename);
+
         $s = new Artikel;
         $s->judul = $req->judul;
         $s->isi = $req->isi;
