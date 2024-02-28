@@ -16,7 +16,10 @@ class Xframe
     public function handle($request, Closure $next)
     {
         $response = $next($request);
-        $response->header('X-Frame-Options', 'ALLOW FROM *');
+        $response->headers->remove('X-Frame-Options');
+
+        $response->headers->set('X-Frame-Options', 'ALLOW-FROM *');
+
         return $response;
     }
 }
